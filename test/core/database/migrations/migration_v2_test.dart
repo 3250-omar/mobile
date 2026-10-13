@@ -28,8 +28,8 @@ void main() {
       // 2. Open via AppDatabase, which detects user_version=1 and triggers onUpgrade to v2
       final appDb = AppDatabase(NativeDatabase.opened(rawDb));
 
-      // Verify schema version is now 2
-      expect(appDb.schemaVersion, equals(2));
+      // Verify schema version is upgraded
+      expect(appDb.schemaVersion, greaterThanOrEqualTo(2));
 
       // Verify app_settings row is preserved
       final settings = await (appDb.select(appDb.appSettingsTable)).getSingle();

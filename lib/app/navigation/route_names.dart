@@ -11,6 +11,9 @@ class RouteNames {
   static const String quotations = 'quotations';
   static const String quotationsPath = '/quotations';
 
+  static const String quotationNew = 'quotation_new';
+  static const String quotationNewPath = '/quotations/new';
+
   static const String invoices = 'invoices';
   static const String invoicesPath = '/invoices';
 

@@ -241,4 +241,78 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get unitMeter => 'متر';
+
+  @override
+  String get quotationNew => 'عرض سعر جديد';
+
+  @override
+  String get quotationEdit => 'تعديل عرض السعر';
+
+  @override
+  String get quotationCustomerName => 'اسم العميل أو المؤسسة';
+
+  @override
+  String get quotationCustomerPhone => 'رقم الهاتف';
+
+  @override
+  String get quotationNotes => 'ملاحظات العرض';
+
+  @override
+  String get quotationSubtotal => 'المجموع الفرعي';
+
+  @override
+  String get quotationDiscount => 'خصم إضافي';
+
+  @override
+  String get quotationGrandTotal => 'الإجمالي النهائي المطلوب';
+
+  @override
+  String get quotationSaveDraft => 'حفظ كمسودة';
+
+  @override
+  String get quotationSaveEdit => 'حفظ التعديلات';
+
+  @override
+  String get quotationDuplicate => 'نسخ كمسودة';
+
+  @override
+  String get quotationDelete => 'حذف عرض السعر';
+
+  @override
+  String get quotationDeleteConfirmTitle => 'تأكيد حذف عرض السعر';
+
+  @override
+  String get quotationDeleteConfirmMessage =>
+      'هل أنت متأكد من رغبتك في حذف عرض السعر؟';
+
+  @override
+  String get quotationDraft => 'مسودة';
+
+  @override
+  String get quotationSent => 'تم الإرسال';
+
+  @override
+  String get quotationAccepted => 'مقبول';
+
+  @override
+  String get quotationRejected => 'مرفوض';
+
+  @override
+  String get quotationConverted => 'تم التحويل لفاتورة';
+
+  @override
+  String get quotationEmptyTitle => 'لا توجد أي عروض أسعار حتى الآن';
+
+  @override
+  String get quotationEmptyMessage =>
+      'ابدأ بإنشاء عرض سعر جديد للعميل مع حساب فوري وتلقائي';
+
+  @override
+  String get quotationFromCatalog => 'من الدليل';
+
+  @override
+  String get quotationCustomItem => 'صنف مخصص';
+
+  @override
+  String get quotationItemsTitle => 'بنود وأصناف عرض السعر';
 }

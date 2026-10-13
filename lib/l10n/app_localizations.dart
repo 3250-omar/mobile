@@ -531,6 +531,150 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'متر'**
   String get unitMeter;
+
+  /// No description provided for @quotationNew.
+  ///
+  /// In ar, this message translates to:
+  /// **'عرض سعر جديد'**
+  String get quotationNew;
+
+  /// No description provided for @quotationEdit.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعديل عرض السعر'**
+  String get quotationEdit;
+
+  /// No description provided for @quotationCustomerName.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم العميل أو المؤسسة'**
+  String get quotationCustomerName;
+
+  /// No description provided for @quotationCustomerPhone.
+  ///
+  /// In ar, this message translates to:
+  /// **'رقم الهاتف'**
+  String get quotationCustomerPhone;
+
+  /// No description provided for @quotationNotes.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملاحظات العرض'**
+  String get quotationNotes;
+
+  /// No description provided for @quotationSubtotal.
+  ///
+  /// In ar, this message translates to:
+  /// **'المجموع الفرعي'**
+  String get quotationSubtotal;
+
+  /// No description provided for @quotationDiscount.
+  ///
+  /// In ar, this message translates to:
+  /// **'خصم إضافي'**
+  String get quotationDiscount;
+
+  /// No description provided for @quotationGrandTotal.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإجمالي النهائي المطلوب'**
+  String get quotationGrandTotal;
+
+  /// No description provided for @quotationSaveDraft.
+  ///
+  /// In ar, this message translates to:
+  /// **'حفظ كمسودة'**
+  String get quotationSaveDraft;
+
+  /// No description provided for @quotationSaveEdit.
+  ///
+  /// In ar, this message translates to:
+  /// **'حفظ التعديلات'**
+  String get quotationSaveEdit;
+
+  /// No description provided for @quotationDuplicate.
+  ///
+  /// In ar, this message translates to:
+  /// **'نسخ كمسودة'**
+  String get quotationDuplicate;
+
+  /// No description provided for @quotationDelete.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف عرض السعر'**
+  String get quotationDelete;
+
+  /// No description provided for @quotationDeleteConfirmTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد حذف عرض السعر'**
+  String get quotationDeleteConfirmTitle;
+
+  /// No description provided for @quotationDeleteConfirmMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'هل أنت متأكد من رغبتك في حذف عرض السعر؟'**
+  String get quotationDeleteConfirmMessage;
+
+  /// No description provided for @quotationDraft.
+  ///
+  /// In ar, this message translates to:
+  /// **'مسودة'**
+  String get quotationDraft;
+
+  /// No description provided for @quotationSent.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم الإرسال'**
+  String get quotationSent;
+
+  /// No description provided for @quotationAccepted.
+  ///
+  /// In ar, this message translates to:
+  /// **'مقبول'**
+  String get quotationAccepted;
+
+  /// No description provided for @quotationRejected.
+  ///
+  /// In ar, this message translates to:
+  /// **'مرفوض'**
+  String get quotationRejected;
+
+  /// No description provided for @quotationConverted.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم التحويل لفاتورة'**
+  String get quotationConverted;
+
+  /// No description provided for @quotationEmptyTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد أي عروض أسعار حتى الآن'**
+  String get quotationEmptyTitle;
+
+  /// No description provided for @quotationEmptyMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'ابدأ بإنشاء عرض سعر جديد للعميل مع حساب فوري وتلقائي'**
+  String get quotationEmptyMessage;
+
+  /// No description provided for @quotationFromCatalog.
+  ///
+  /// In ar, this message translates to:
+  /// **'من الدليل'**
+  String get quotationFromCatalog;
+
+  /// No description provided for @quotationCustomItem.
+  ///
+  /// In ar, this message translates to:
+  /// **'صنف مخصص'**
+  String get quotationCustomItem;
+
+  /// No description provided for @quotationItemsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'بنود وأصناف عرض السعر'**
+  String get quotationItemsTitle;
 }
 
 class _AppLocalizationsDelegate

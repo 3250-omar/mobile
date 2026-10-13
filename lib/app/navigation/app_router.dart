@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import '../../features/home/presentation/home_screen.dart';
 import '../../features/invoices/presentation/invoices_screen.dart';
 import '../../features/products/presentation/products_screen.dart';
+import '../../features/quotations/domain/quotation.dart';
+import '../../features/quotations/presentation/quotation_form_screen.dart';
 import '../../features/quotations/presentation/quotations_screen.dart';
 import '../../features/scan/presentation/scan_screen.dart';
 import '../../features/settings/presentation/settings_screen.dart';
@@ -89,6 +91,13 @@ GoRouter createAppRouter({String initialLocation = RouteNames.homePath}) {
         path: RouteNames.settingsPath,
         parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) => const SettingsScreen(),
+      ),
+      GoRoute(
+        name: RouteNames.quotationNew,
+        path: RouteNames.quotationNewPath,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) =>
+            QuotationFormScreen(existingQuotation: state.extra as Quotation?),
       ),
     ],
     errorBuilder: (context, state) {

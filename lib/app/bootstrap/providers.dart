@@ -8,6 +8,9 @@ import '../../features/products/application/catalog_controller.dart';
 import '../../features/products/application/import_controller.dart';
 import '../../features/products/data/drift_catalog_repository.dart';
 import '../../features/products/domain/catalog_repository.dart';
+import '../../features/quotations/application/quotations_controller.dart';
+import '../../features/quotations/data/drift_quotation_repository.dart';
+import '../../features/quotations/domain/quotation_repository.dart';
 import '../../features/settings/application/settings_controller.dart';
 import '../../features/settings/domain/app_settings.dart';
 import '../../features/settings/domain/settings_repository.dart';
@@ -82,4 +85,17 @@ final importControllerProvider =
     StateNotifierProvider<ImportController, ImportState>((ref) {
       final repository = ref.watch(catalogRepositoryProvider);
       return ImportController(catalogRepository: repository);
+    });
+
+/// Provider for quotations repository.
+final quotationRepositoryProvider = Provider<QuotationRepository>((ref) {
+  final db = ref.watch(appDatabaseProvider);
+  return DriftQuotationRepository(db);
+});
+
+/// Provider for quotations list and filter controller.
+final quotationsControllerProvider =
+    StateNotifierProvider<QuotationsController, QuotationsState>((ref) {
+      final repository = ref.watch(quotationRepositoryProvider);
+      return QuotationsController(repository);
     });

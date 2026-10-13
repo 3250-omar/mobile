@@ -35,6 +35,20 @@ MigrationStrategy buildMigrationStrategy({
           }
         }
       }
+      if (from < 3) {
+        // Migrate schema from v2 to v3: create quotations and quotation_items tables and indices.
+        for (final entity in database.allSchemaEntities) {
+          if (entity is TableInfo &&
+              (entity.actualTableName == 'quotations' ||
+                  entity.actualTableName == 'quotation_items')) {
+            await m.createTable(entity);
+          } else if (entity is Index &&
+              (entity.entityName.startsWith('idx_quotations_') ||
+                  entity.entityName.startsWith('idx_quotation_items_'))) {
+            await m.createIndex(entity);
+          }
+        }
+      }
     },
     beforeOpen: (OpeningDetails details) async {
       if (details.versionBefore != null &&
