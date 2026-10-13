@@ -24,7 +24,17 @@ MigrationStrategy buildMigrationStrategy({
       if (from > to) {
         throw NewerSchemaException(from, to);
       }
-      // Foundation schema is v1. Future versions will apply transactional migrations here.
+      if (from < 2) {
+        // Migrate schema from v1 to v2: create products table and associated indices.
+        for (final entity in database.allSchemaEntities) {
+          if (entity is TableInfo && entity.actualTableName == 'products') {
+            await m.createTable(entity);
+          } else if (entity is Index &&
+              entity.entityName.startsWith('idx_products_')) {
+            await m.createIndex(entity);
+          }
+        }
+      }
     },
     beforeOpen: (OpeningDetails details) async {
       if (details.versionBefore != null &&

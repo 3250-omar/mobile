@@ -65,5 +65,22 @@
         "type": "String"
       }
     }
-  }
+  },
+  "catalogTitle": "دليل الأصناف والمنتجات",
+  "catalogSearchHint": "ابحث بالاسم، الكود، أو المقاس...",
+  "catalogEmptyTitle": "لا توجد أصناف مسجلة",
+  "catalogEmptyMessage": "ابدأ بإضافة صنف جديد يدوياً أو استيراد ملف إكسيل",
+  "catalogNoSearchResults": "لا توجد أصناف مطابقة لبحثك",
+  "catalogClearSearch": "مسح البحث",
+  "catalogExportAction": "تصدير كإكسيل",
+  "catalogImportAction": "استيراد من إكسيل",
+  "catalogAddProduct": "إضافة صنف جديد",
+  "catalogEditProduct": "تعديل بيانات الصنف",
+  "catalogDeleteProduct": "حذف الصنف",
+  "catalogDeleteConfirmation": "هل أنت متأكد من حذف الصنف؟",
+  "catalogExportSuccess": "تم تصدير ملف الأصناف بنجاح",
+  "catalogImportSuccess": "تم استيراد الأصناف بنجاح",
+  "currencyEgp": "ج.م",
+  "unitPiece": "قطعة",
+  "unitMeter": "متر"
 }

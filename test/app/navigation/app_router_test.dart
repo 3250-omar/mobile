@@ -14,6 +14,8 @@ import 'package:offline_quotes/features/settings/domain/settings_repository.dart
 import 'package:offline_quotes/features/settings/presentation/settings_screen.dart';
 import 'package:offline_quotes/l10n/app_localizations.dart';
 
+import '../../support/fake_catalog_repository.dart';
+
 class _FakeSettingsRepo implements SettingsRepository {
   AppSettings current = AppSettings.defaults();
 
@@ -36,6 +38,7 @@ void main() {
     return ProviderScope(
       overrides: [
         settingsRepositoryProvider.overrideWithValue(_FakeSettingsRepo()),
+        catalogRepositoryProvider.overrideWithValue(FakeCatalogRepository()),
       ],
       child: MaterialApp.router(
         routerConfig: router,

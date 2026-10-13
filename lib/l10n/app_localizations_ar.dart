@@ -189,4 +189,56 @@ class AppLocalizationsAr extends AppLocalizations {
   String codeDiagnosticRef(String ref) {
     return 'رمز التشخيص: $ref';
   }
+
+  @override
+  String get catalogTitle => 'دليل الأصناف والمنتجات';
+
+  @override
+  String get catalogSearchHint => 'ابحث بالاسم، الكود، أو المقاس...';
+
+  @override
+  String get catalogEmptyTitle => 'لا توجد أصناف مسجلة';
+
+  @override
+  String get catalogEmptyMessage =>
+      'ابدأ بإضافة صنف جديد يدوياً أو استيراد ملف إكسيل';
+
+  @override
+  String get catalogNoSearchResults => 'لا توجد أصناف مطابقة لبحثك';
+
+  @override
+  String get catalogClearSearch => 'مسح البحث';
+
+  @override
+  String get catalogExportAction => 'تصدير كإكسيل';
+
+  @override
+  String get catalogImportAction => 'استيراد من إكسيل';
+
+  @override
+  String get catalogAddProduct => 'إضافة صنف جديد';
+
+  @override
+  String get catalogEditProduct => 'تعديل بيانات الصنف';
+
+  @override
+  String get catalogDeleteProduct => 'حذف الصنف';
+
+  @override
+  String get catalogDeleteConfirmation => 'هل أنت متأكد من حذف الصنف؟';
+
+  @override
+  String get catalogExportSuccess => 'تم تصدير ملف الأصناف بنجاح';
+
+  @override
+  String get catalogImportSuccess => 'تم استيراد الأصناف بنجاح';
+
+  @override
+  String get currencyEgp => 'ج.م';
+
+  @override
+  String get unitPiece => 'قطعة';
+
+  @override
+  String get unitMeter => 'متر';
 }

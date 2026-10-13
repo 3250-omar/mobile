@@ -14,6 +14,8 @@ class AppTextField extends StatelessWidget {
     this.errorText,
     this.keyboardType,
     this.onChanged,
+    this.validator,
+    this.maxLines = 1,
     this.isBidiIsolated = false,
   });
 
@@ -23,6 +25,8 @@ class AppTextField extends StatelessWidget {
   final String? errorText;
   final TextInputType? keyboardType;
   final ValueChanged<String>? onChanged;
+  final FormFieldValidator<String>? validator;
+  final int? maxLines;
   final bool isBidiIsolated;
 
   @override
@@ -41,10 +45,12 @@ class AppTextField extends StatelessWidget {
         ],
         ConstrainedBox(
           constraints: const BoxConstraints(minHeight: 48.0),
-          child: TextField(
+          child: TextFormField(
             controller: controller,
             keyboardType: keyboardType,
             onChanged: onChanged,
+            validator: validator,
+            maxLines: maxLines,
             decoration: InputDecoration(
               hintText: hintText,
               errorText: errorText,

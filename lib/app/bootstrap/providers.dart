@@ -1,8 +1,13 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
+import '../../core/database/app_database.dart';
 import '../../core/diagnostics/app_logger.dart';
 import '../../core/storage/platform_data_protection.dart';
+import '../../features/products/application/catalog_controller.dart';
+import '../../features/products/application/import_controller.dart';
+import '../../features/products/data/drift_catalog_repository.dart';
+import '../../features/products/domain/catalog_repository.dart';
 import '../../features/settings/application/settings_controller.dart';
 import '../../features/settings/domain/app_settings.dart';
 import '../../features/settings/domain/settings_repository.dart';
@@ -50,4 +55,31 @@ final settingsControllerProvider =
     StateNotifierProvider<SettingsController, AsyncValue<AppSettings>>((ref) {
       final repository = ref.watch(settingsRepositoryProvider);
       return SettingsController(repository);
+    });
+
+/// Central Drift database instance provider.
+final appDatabaseProvider = Provider<AppDatabase>((ref) {
+  final db = AppDatabase();
+  ref.onDispose(() => db.close());
+  return db;
+});
+
+/// Provider for products catalog repository.
+final catalogRepositoryProvider = Provider<CatalogRepository>((ref) {
+  final db = ref.watch(appDatabaseProvider);
+  return DriftCatalogRepository(db);
+});
+
+/// Provider for catalog state and instant search controller.
+final catalogControllerProvider =
+    StateNotifierProvider<CatalogController, CatalogState>((ref) {
+      final repository = ref.watch(catalogRepositoryProvider);
+      return CatalogController(repository);
+    });
+
+/// Provider for Excel catalog import controller.
+final importControllerProvider =
+    StateNotifierProvider<ImportController, ImportState>((ref) {
+      final repository = ref.watch(catalogRepositoryProvider);
+      return ImportController(catalogRepository: repository);
     });

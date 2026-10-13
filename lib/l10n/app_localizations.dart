@@ -429,6 +429,108 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'رمز التشخيص: {ref}'**
   String codeDiagnosticRef(String ref);
+
+  /// No description provided for @catalogTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'دليل الأصناف والمنتجات'**
+  String get catalogTitle;
+
+  /// No description provided for @catalogSearchHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'ابحث بالاسم، الكود، أو المقاس...'**
+  String get catalogSearchHint;
+
+  /// No description provided for @catalogEmptyTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد أصناف مسجلة'**
+  String get catalogEmptyTitle;
+
+  /// No description provided for @catalogEmptyMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'ابدأ بإضافة صنف جديد يدوياً أو استيراد ملف إكسيل'**
+  String get catalogEmptyMessage;
+
+  /// No description provided for @catalogNoSearchResults.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد أصناف مطابقة لبحثك'**
+  String get catalogNoSearchResults;
+
+  /// No description provided for @catalogClearSearch.
+  ///
+  /// In ar, this message translates to:
+  /// **'مسح البحث'**
+  String get catalogClearSearch;
+
+  /// No description provided for @catalogExportAction.
+  ///
+  /// In ar, this message translates to:
+  /// **'تصدير كإكسيل'**
+  String get catalogExportAction;
+
+  /// No description provided for @catalogImportAction.
+  ///
+  /// In ar, this message translates to:
+  /// **'استيراد من إكسيل'**
+  String get catalogImportAction;
+
+  /// No description provided for @catalogAddProduct.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة صنف جديد'**
+  String get catalogAddProduct;
+
+  /// No description provided for @catalogEditProduct.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعديل بيانات الصنف'**
+  String get catalogEditProduct;
+
+  /// No description provided for @catalogDeleteProduct.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف الصنف'**
+  String get catalogDeleteProduct;
+
+  /// No description provided for @catalogDeleteConfirmation.
+  ///
+  /// In ar, this message translates to:
+  /// **'هل أنت متأكد من حذف الصنف؟'**
+  String get catalogDeleteConfirmation;
+
+  /// No description provided for @catalogExportSuccess.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم تصدير ملف الأصناف بنجاح'**
+  String get catalogExportSuccess;
+
+  /// No description provided for @catalogImportSuccess.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم استيراد الأصناف بنجاح'**
+  String get catalogImportSuccess;
+
+  /// No description provided for @currencyEgp.
+  ///
+  /// In ar, this message translates to:
+  /// **'ج.م'**
+  String get currencyEgp;
+
+  /// No description provided for @unitPiece.
+  ///
+  /// In ar, this message translates to:
+  /// **'قطعة'**
+  String get unitPiece;
+
+  /// No description provided for @unitMeter.
+  ///
+  /// In ar, this message translates to:
+  /// **'متر'**
+  String get unitMeter;
 }
 
 class _AppLocalizationsDelegate
