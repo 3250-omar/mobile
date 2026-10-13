@@ -46,8 +46,9 @@ void main() {
           FakeQuotationRepository(),
         ),
         invoiceRepositoryProvider.overrideWithValue(FakeInvoiceRepository()),
-        dashboardRepositoryProvider
-            .overrideWithValue(FakeDashboardRepository()),
+        dashboardRepositoryProvider.overrideWithValue(
+          FakeDashboardRepository(),
+        ),
       ],
       child: MaterialApp.router(
         routerConfig: router,

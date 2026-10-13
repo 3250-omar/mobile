@@ -28,4 +28,7 @@ class RouteNames {
 
   static const String settings = 'settings';
   static const String settingsPath = '/settings';
+
+  static const String backup = 'backup';
+  static const String backupPath = '/settings/backup';
 }

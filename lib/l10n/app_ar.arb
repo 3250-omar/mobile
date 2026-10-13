@@ -164,7 +164,20 @@
   "dashboardRecentActivity": "النشاط الأخير",
   "dashboardRecentEmpty": "لا توجد معاملات تجارية مسجلة بعد",
   "dashboardOfflineSecure": "100% دون إنترنت",
-  "dashboardWelcome": "مرحباً بك في تسعيرة"
+  "dashboardWelcome": "مرحباً بك في تسعيرة",
+  "backupTitle": "النسخ الاحتياطي والاستعادة",
+  "backupSectionExport": "النسخ الاحتياطي المحلي",
+  "backupSectionRestore": "استعادة البيانات",
+  "backupCreateButton": "إنشاء نسخة احتياطية الآن",
+  "backupPickFileButton": "اختيار ملف النسخة الاحتياطية",
+  "backupLastDate": "آخر نسخة احتياطية",
+  "backupNever": "لم يتم أخذ نسخة احتياطية بعد",
+  "backupSuccess": "تم إنشاء النسخة الاحتياطية بنجاح",
+  "restoreSuccess": "تمت استعادة البيانات بنجاح",
+  "restoreWarning": "تنبيه: الاستعادة ستقوم باستبدال البيانات الحالية بالبيانات الموجودة في النسخة المحددة بعد فحص سلامتها.",
+  "backupPasswordOptional": "كلمة المرور (اختياري لتشفير النسخة)",
+  "backupPasswordRequired": "أدخل كلمة المرور لفك تشفير النسخة"
 }
+
 
 

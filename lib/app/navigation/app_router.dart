@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/backup/presentation/backup_restore_screen.dart';
 import '../../features/home/presentation/home_screen.dart';
 import '../../features/invoices/domain/invoice.dart';
 import '../../features/invoices/presentation/invoice_form_screen.dart';
@@ -130,6 +131,12 @@ GoRouter createAppRouter({String initialLocation = RouteNames.homePath}) {
           }
           return const InvoiceFormScreen();
         },
+      ),
+      GoRoute(
+        name: RouteNames.backup,
+        path: RouteNames.backupPath,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const BackupRestoreScreen(),
       ),
     ],
     errorBuilder: (context, state) {

@@ -1023,6 +1023,78 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'مرحباً بك في تسعيرة'**
   String get dashboardWelcome;
+
+  /// No description provided for @backupTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'النسخ الاحتياطي والاستعادة'**
+  String get backupTitle;
+
+  /// No description provided for @backupSectionExport.
+  ///
+  /// In ar, this message translates to:
+  /// **'النسخ الاحتياطي المحلي'**
+  String get backupSectionExport;
+
+  /// No description provided for @backupSectionRestore.
+  ///
+  /// In ar, this message translates to:
+  /// **'استعادة البيانات'**
+  String get backupSectionRestore;
+
+  /// No description provided for @backupCreateButton.
+  ///
+  /// In ar, this message translates to:
+  /// **'إنشاء نسخة احتياطية الآن'**
+  String get backupCreateButton;
+
+  /// No description provided for @backupPickFileButton.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختيار ملف النسخة الاحتياطية'**
+  String get backupPickFileButton;
+
+  /// No description provided for @backupLastDate.
+  ///
+  /// In ar, this message translates to:
+  /// **'آخر نسخة احتياطية'**
+  String get backupLastDate;
+
+  /// No description provided for @backupNever.
+  ///
+  /// In ar, this message translates to:
+  /// **'لم يتم أخذ نسخة احتياطية بعد'**
+  String get backupNever;
+
+  /// No description provided for @backupSuccess.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم إنشاء النسخة الاحتياطية بنجاح'**
+  String get backupSuccess;
+
+  /// No description provided for @restoreSuccess.
+  ///
+  /// In ar, this message translates to:
+  /// **'تمت استعادة البيانات بنجاح'**
+  String get restoreSuccess;
+
+  /// No description provided for @restoreWarning.
+  ///
+  /// In ar, this message translates to:
+  /// **'تنبيه: الاستعادة ستقوم باستبدال البيانات الحالية بالبيانات الموجودة في النسخة المحددة بعد فحص سلامتها.'**
+  String get restoreWarning;
+
+  /// No description provided for @backupPasswordOptional.
+  ///
+  /// In ar, this message translates to:
+  /// **'كلمة المرور (اختياري لتشفير النسخة)'**
+  String get backupPasswordOptional;
+
+  /// No description provided for @backupPasswordRequired.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل كلمة المرور لفك تشفير النسخة'**
+  String get backupPasswordRequired;
 }
 
 class _AppLocalizationsDelegate

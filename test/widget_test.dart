@@ -40,8 +40,9 @@ void main() {
           overrides: [
             initializationControllerProvider.overrideWith((ref) => controller),
             settingsRepositoryProvider.overrideWithValue(FakeSettingsRepo()),
-            dashboardRepositoryProvider
-                .overrideWithValue(FakeDashboardRepository()),
+            dashboardRepositoryProvider.overrideWithValue(
+              FakeDashboardRepository(),
+            ),
           ],
           child: const OfflineQuotesApp(),
         ),

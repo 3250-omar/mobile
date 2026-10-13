@@ -491,4 +491,41 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get dashboardWelcome => 'مرحباً بك في تسعيرة';
+
+  @override
+  String get backupTitle => 'النسخ الاحتياطي والاستعادة';
+
+  @override
+  String get backupSectionExport => 'النسخ الاحتياطي المحلي';
+
+  @override
+  String get backupSectionRestore => 'استعادة البيانات';
+
+  @override
+  String get backupCreateButton => 'إنشاء نسخة احتياطية الآن';
+
+  @override
+  String get backupPickFileButton => 'اختيار ملف النسخة الاحتياطية';
+
+  @override
+  String get backupLastDate => 'آخر نسخة احتياطية';
+
+  @override
+  String get backupNever => 'لم يتم أخذ نسخة احتياطية بعد';
+
+  @override
+  String get backupSuccess => 'تم إنشاء النسخة الاحتياطية بنجاح';
+
+  @override
+  String get restoreSuccess => 'تمت استعادة البيانات بنجاح';
+
+  @override
+  String get restoreWarning =>
+      'تنبيه: الاستعادة ستقوم باستبدال البيانات الحالية بالبيانات الموجودة في النسخة المحددة بعد فحص سلامتها.';
+
+  @override
+  String get backupPasswordOptional => 'كلمة المرور (اختياري لتشفير النسخة)';
+
+  @override
+  String get backupPasswordRequired => 'أدخل كلمة المرور لفك تشفير النسخة';
 }

@@ -8,6 +8,9 @@ import '../../features/products/application/catalog_controller.dart';
 import '../../features/products/application/import_controller.dart';
 import '../../features/products/data/drift_catalog_repository.dart';
 import '../../features/products/domain/catalog_repository.dart';
+import '../../features/backup/application/backup_restore_controller.dart';
+import '../../features/backup/data/default_backup_restore_service.dart';
+import '../../features/backup/domain/backup_restore_service.dart';
 import '../../features/home/application/dashboard_controller.dart';
 import '../../features/home/application/dashboard_state.dart';
 import '../../features/home/data/drift_dashboard_repository.dart';
@@ -184,4 +187,17 @@ final dashboardControllerProvider =
     StateNotifierProvider<DashboardController, DashboardState>((ref) {
       final repository = ref.watch(dashboardRepositoryProvider);
       return DashboardController(repository);
+    });
+
+/// Provider for local backup and restore service.
+final backupRestoreServiceProvider = Provider<BackupRestoreService>((ref) {
+  final db = ref.watch(appDatabaseProvider);
+  return DefaultBackupRestoreService(db: db);
+});
+
+/// Provider for backup and restore controller.
+final backupRestoreControllerProvider =
+    StateNotifierProvider<BackupRestoreController, BackupRestoreState>((ref) {
+      final service = ref.watch(backupRestoreServiceProvider);
+      return BackupRestoreController(service);
     });

@@ -17,8 +17,9 @@ void main() {
     return ProviderScope(
       overrides: [
         initializationControllerProvider.overrideWith((ref) => controller),
-        dashboardRepositoryProvider
-            .overrideWithValue(FakeDashboardRepository()),
+        dashboardRepositoryProvider.overrideWithValue(
+          FakeDashboardRepository(),
+        ),
       ],
       child: const MaterialApp(
         localizationsDelegates: AppLocalizations.localizationsDelegates,
