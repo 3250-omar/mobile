@@ -1,0 +1,53 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
+
+import '../../core/diagnostics/app_logger.dart';
+import '../../core/storage/platform_data_protection.dart';
+import '../../features/settings/application/settings_controller.dart';
+import '../../features/settings/domain/app_settings.dart';
+import '../../features/settings/domain/settings_repository.dart';
+import 'app_environment.dart';
+import 'initialization_controller.dart';
+import 'initialization_state.dart';
+
+/// Provider for the compile-time application environment.
+final appEnvironmentProvider = Provider<AppEnvironment>((ref) {
+  return AppEnvironment.fromEnvironment();
+});
+
+/// Provider for local privacy-compliant diagnostics logger.
+final appLoggerProvider = Provider<AppLogger>((ref) {
+  final logger = AppLogger();
+  ref.onDispose(() => logger.dispose());
+  return logger;
+});
+
+/// Provider for OS platform data protection and backup exclusion.
+final platformDataProtectionProvider = Provider<PlatformDataProtection>((ref) {
+  return DefaultPlatformDataProtection();
+});
+
+/// Provider for persistent settings repository.
+///
+/// Overridden in tests or initialized during bootstrap.
+final settingsRepositoryProvider = Provider<SettingsRepository>((ref) {
+  throw UnimplementedError(
+    'settingsRepositoryProvider must be initialized or overridden',
+  );
+});
+
+/// Provider managing single-flight initialization lifecycle and recovery.
+final initializationControllerProvider =
+    StateNotifierProvider<
+      InitializationController,
+      ApplicationInitializationState
+    >((ref) {
+      return InitializationController();
+    });
+
+/// Provider for settings state controller.
+final settingsControllerProvider =
+    StateNotifierProvider<SettingsController, AsyncValue<AppSettings>>((ref) {
+      final repository = ref.watch(settingsRepositoryProvider);
+      return SettingsController(repository);
+    });

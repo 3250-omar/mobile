@@ -4,7 +4,9 @@
 
 **Created**: 2026-10-12
 
-**Status**: Draft
+**Status**: Approved
+
+**Approved**: 2026-10-12
 
 **Input**: User description: "Establish the production-quality, fully offline, Arabic-first Flutter application foundation for Android and iOS."
 
@@ -25,6 +27,14 @@
 - Q: What should the app allow when its local database cannot be opened or migrated safely after retries?
   -> A: Preserve all local files, block unsafe use, offer retry and diagnostic guidance, and provide no
   in-app reset or deletion in this feature.
+
+### Approved Technical Identity
+
+- Flutter/Dart project name: `offline_quotes`.
+- Reverse-domain organization: `com.offlinequotes`.
+- Android application ID and iOS bundle ID: `com.offlinequotes.mobile`.
+- These identifiers are technical defaults for deterministic scaffolding and do not establish final
+  user-facing product branding.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -308,6 +318,9 @@ documentation and completes the documented analysis, tests, Android build, and a
   supported text scaling, with no inaccessible required action or information conveyed only by color.
 - **NFR-006 — Privacy**: The foundation MUST perform no unauthorized network transmission and SHOULD omit
   unnecessary internet permissions where the target platform permits; diagnostics MUST remain local.
+  Until a separately approved backup/restore specification exists, SQLite files, sidecars, settings, and
+  diagnostic files MUST be excluded from Android cloud backup/device transfer and iOS backup, and MUST use
+  platform-appropriate encrypted private storage and file-protection facilities.
 - **NFR-007 — Maintainability**: Foundational modules MUST be independently testable, documented, and
   replaceable at defined boundaries without duplicating configuration, error, or persistence rules.
 - **NFR-008 — Platform parity**: Every acceptance scenario MUST be validated independently on Android and
@@ -387,7 +400,9 @@ documentation and completes the documented analysis, tests, Android build, and a
   the active destination, change an exposed setting, and understand an error state without inaccessible
   required actions.
 - **SC-012**: Network monitoring during all foundational acceptance journeys observes zero attempted remote
-  connections by application-controlled code.
+  connections by application-controlled code; platform configuration inspection confirms that SQLite,
+  settings, and diagnostic files are not eligible for automatic Android cloud backup/device transfer or
+  iOS backup before a separately approved backup/restore feature exists.
 - **SC-013**: Clean-install and subsequent-launch acceptance tests complete without any sensitive runtime
   permission prompt on both Android and iOS.
 
