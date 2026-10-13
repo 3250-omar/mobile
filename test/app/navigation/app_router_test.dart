@@ -99,6 +99,15 @@ void main() {
       expect(find.byType(ScanScreen), findsOneWidget);
     });
 
+    testWidgets('navigates to Scan Review screen', (tester) async {
+      await tester.pumpWidget(
+        buildAppWithRouter(initialLocation: RouteNames.scanReviewPath),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('مراجعة الأصناف المستخرجة'), findsOneWidget);
+    });
+
     testWidgets('navigates to Settings root screen', (tester) async {
       await tester.pumpWidget(
         buildAppWithRouter(initialLocation: RouteNames.settingsPath),

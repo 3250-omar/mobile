@@ -17,9 +17,14 @@ import '../domain/quotation.dart';
 
 /// Interactive Arabic screen for building and editing quotation drafts.
 class QuotationFormScreen extends ConsumerStatefulWidget {
-  const QuotationFormScreen({super.key, this.existingQuotation});
+  const QuotationFormScreen({
+    super.key,
+    this.existingQuotation,
+    this.initialItems,
+  });
 
   final Quotation? existingQuotation;
+  final List<QuotationItemDraft>? initialItems;
 
   @override
   ConsumerState<QuotationFormScreen> createState() =>
@@ -48,7 +53,10 @@ class _QuotationFormScreenState extends ConsumerState<QuotationFormScreen> {
 
     _formProvider =
         StateNotifierProvider<QuotationFormController, QuotationFormState>(
-          (ref) => QuotationFormController(initialQuotation: q),
+          (ref) => QuotationFormController(
+            initialQuotation: q,
+            initialItems: widget.initialItems,
+          ),
         );
   }
 

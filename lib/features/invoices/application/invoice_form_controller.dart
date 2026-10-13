@@ -107,7 +107,10 @@ class InvoiceFormState {
 
 /// Controller managing invoice creation form fields, calculations, and persistence.
 class InvoiceFormController extends StateNotifier<InvoiceFormState> {
-  InvoiceFormController(this._repository) : super(InvoiceFormState());
+  InvoiceFormController(
+    this._repository, {
+    List<InvoiceItemDraft>? initialItems,
+  }) : super(InvoiceFormState(items: initialItems ?? const []));
 
   final InvoiceRepository _repository;
 

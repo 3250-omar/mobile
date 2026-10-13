@@ -17,7 +17,9 @@ import '../domain/invoice.dart';
 
 /// Interactive Arabic screen for building and persisting new sales invoices.
 class InvoiceFormScreen extends ConsumerStatefulWidget {
-  const InvoiceFormScreen({super.key});
+  const InvoiceFormScreen({super.key, this.initialItems});
+
+  final List<InvoiceItemDraft>? initialItems;
 
   @override
   ConsumerState<InvoiceFormScreen> createState() => _InvoiceFormScreenState();
@@ -44,7 +46,10 @@ class _InvoiceFormScreenState extends ConsumerState<InvoiceFormScreen> {
 
     _formProvider =
         StateNotifierProvider<InvoiceFormController, InvoiceFormState>(
-          (ref) => InvoiceFormController(ref.watch(invoiceRepositoryProvider)),
+          (ref) => InvoiceFormController(
+            ref.watch(invoiceRepositoryProvider),
+            initialItems: widget.initialItems,
+          ),
         );
   }
 

@@ -116,35 +116,40 @@ class QuotationFormState {
 
 /// State notifier managing in-memory quotation construction and validation.
 class QuotationFormController extends StateNotifier<QuotationFormState> {
-  QuotationFormController({Quotation? initialQuotation})
-    : super(
-        initialQuotation != null
-            ? QuotationFormState(
-                id: initialQuotation.id,
-                referenceNumber: initialQuotation.referenceNumber,
-                customerName: initialQuotation.customerName,
-                customerPhone: initialQuotation.customerPhone,
-                notes: initialQuotation.notes,
-                issueDate: initialQuotation.issueDate,
-                validUntil: initialQuotation.validUntil,
-                discountPiastres: initialQuotation.discountPiastres,
-                taxPiastres: initialQuotation.taxPiastres,
-                items: initialQuotation.items
-                    .map(
-                      (i) => QuotationItemDraft(
-                        productId: i.productId,
-                        productCode: i.productCode,
-                        productName: i.productName,
-                        unit: i.unit,
-                        unitPricePiastres: i.unitPricePiastres,
-                        quantity: i.quantity,
-                        lineDiscountPiastres: i.lineDiscountPiastres,
-                      ),
-                    )
-                    .toList(),
-              )
-            : QuotationFormState(issueDate: DateTime.now()),
-      );
+  QuotationFormController({
+    Quotation? initialQuotation,
+    List<QuotationItemDraft>? initialItems,
+  }) : super(
+         initialQuotation != null
+             ? QuotationFormState(
+                 id: initialQuotation.id,
+                 referenceNumber: initialQuotation.referenceNumber,
+                 customerName: initialQuotation.customerName,
+                 customerPhone: initialQuotation.customerPhone,
+                 notes: initialQuotation.notes,
+                 issueDate: initialQuotation.issueDate,
+                 validUntil: initialQuotation.validUntil,
+                 discountPiastres: initialQuotation.discountPiastres,
+                 taxPiastres: initialQuotation.taxPiastres,
+                 items: initialQuotation.items
+                     .map(
+                       (i) => QuotationItemDraft(
+                         productId: i.productId,
+                         productCode: i.productCode,
+                         productName: i.productName,
+                         unit: i.unit,
+                         unitPricePiastres: i.unitPricePiastres,
+                         quantity: i.quantity,
+                         lineDiscountPiastres: i.lineDiscountPiastres,
+                       ),
+                     )
+                     .toList(),
+               )
+             : QuotationFormState(
+                 issueDate: DateTime.now(),
+                 items: initialItems ?? const [],
+               ),
+       );
 
   void setCustomerName(String name) {
     state = state.copyWith(customerName: name);

@@ -831,6 +831,120 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'المحصل'**
   String get invoiceMetricsPaid;
+
+  /// No description provided for @scanCameraCapture.
+  ///
+  /// In ar, this message translates to:
+  /// **'التقاط بالكاميرا'**
+  String get scanCameraCapture;
+
+  /// No description provided for @scanGalleryPick.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختيار من المعرض'**
+  String get scanGalleryPick;
+
+  /// No description provided for @scanProcessing.
+  ///
+  /// In ar, this message translates to:
+  /// **'جاري التعرف على النص ومطابقة الأصناف محلياً...'**
+  String get scanProcessing;
+
+  /// No description provided for @scanReviewTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'مراجعة الأصناف المستخرجة'**
+  String get scanReviewTitle;
+
+  /// No description provided for @scanEmptyNoText.
+  ///
+  /// In ar, this message translates to:
+  /// **'لم يتم العثور على أي نصوص في الصورة المحددة'**
+  String get scanEmptyNoText;
+
+  /// No description provided for @scanStatusVerified.
+  ///
+  /// In ar, this message translates to:
+  /// **'مطابق ومؤكد'**
+  String get scanStatusVerified;
+
+  /// No description provided for @scanStatusNeedsReview.
+  ///
+  /// In ar, this message translates to:
+  /// **'بحاجة لمراجعة'**
+  String get scanStatusNeedsReview;
+
+  /// No description provided for @scanStatusUnmatched.
+  ///
+  /// In ar, this message translates to:
+  /// **'صنف مخصص'**
+  String get scanStatusUnmatched;
+
+  /// No description provided for @scanSelectCandidate.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختيار الصنف المطابق'**
+  String get scanSelectCandidate;
+
+  /// No description provided for @scanConfidence.
+  ///
+  /// In ar, this message translates to:
+  /// **'نسبة الدقة'**
+  String get scanConfidence;
+
+  /// No description provided for @scanCreateQuotation.
+  ///
+  /// In ar, this message translates to:
+  /// **'إنشاء عرض سعر'**
+  String get scanCreateQuotation;
+
+  /// No description provided for @scanCreateInvoice.
+  ///
+  /// In ar, this message translates to:
+  /// **'إنشاء فاتورة'**
+  String get scanCreateInvoice;
+
+  /// No description provided for @scanAddManualItem.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة صنف جديد'**
+  String get scanAddManualItem;
+
+  /// No description provided for @scanDeleteItem.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف البند'**
+  String get scanDeleteItem;
+
+  /// No description provided for @scanConfidenceWarning.
+  ///
+  /// In ar, this message translates to:
+  /// **'تنبيه: دقة المطابقة أقل من 85% أو توجد عدة أصناف مشابهة، يرجى التأكيد.'**
+  String get scanConfidenceWarning;
+
+  /// No description provided for @scanKeepCustomItem.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإبقاء كصنف مخصص'**
+  String get scanKeepCustomItem;
+
+  /// No description provided for @scanOriginalImage.
+  ///
+  /// In ar, this message translates to:
+  /// **'معاينة المستند الممسوح'**
+  String get scanOriginalImage;
+
+  /// No description provided for @scanExtractButton.
+  ///
+  /// In ar, this message translates to:
+  /// **'بدء المعالجة والاستخراج'**
+  String get scanExtractButton;
+
+  /// No description provided for @scanTakeAnother.
+  ///
+  /// In ar, this message translates to:
+  /// **'مسح ورقة أخرى'**
+  String get scanTakeAnother;
 }
 
 class _AppLocalizationsDelegate

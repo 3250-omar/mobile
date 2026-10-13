@@ -132,5 +132,25 @@
   "invoiceItemsTitle": "بنود وأصناف الفاتورة",
   "invoiceMetricsTotal": "الفواتير",
   "invoiceMetricsReceivables": "المستحقات",
-  "invoiceMetricsPaid": "المحصل"
+  "invoiceMetricsPaid": "المحصل",
+  "scanCameraCapture": "التقاط بالكاميرا",
+  "scanGalleryPick": "اختيار من المعرض",
+  "scanProcessing": "جاري التعرف على النص ومطابقة الأصناف محلياً...",
+  "scanReviewTitle": "مراجعة الأصناف المستخرجة",
+  "scanEmptyNoText": "لم يتم العثور على أي نصوص في الصورة المحددة",
+  "scanStatusVerified": "مطابق ومؤكد",
+  "scanStatusNeedsReview": "بحاجة لمراجعة",
+  "scanStatusUnmatched": "صنف مخصص",
+  "scanSelectCandidate": "اختيار الصنف المطابق",
+  "scanConfidence": "نسبة الدقة",
+  "scanCreateQuotation": "إنشاء عرض سعر",
+  "scanCreateInvoice": "إنشاء فاتورة",
+  "scanAddManualItem": "إضافة صنف جديد",
+  "scanDeleteItem": "حذف البند",
+  "scanConfidenceWarning": "تنبيه: دقة المطابقة أقل من 85% أو توجد عدة أصناف مشابهة، يرجى التأكيد.",
+  "scanKeepCustomItem": "الإبقاء كصنف مخصص",
+  "scanOriginalImage": "معاينة المستند الممسوح",
+  "scanExtractButton": "بدء المعالجة والاستخراج",
+  "scanTakeAnother": "مسح ورقة أخرى"
 }
+

@@ -394,4 +394,62 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get invoiceMetricsPaid => 'المحصل';
+
+  @override
+  String get scanCameraCapture => 'التقاط بالكاميرا';
+
+  @override
+  String get scanGalleryPick => 'اختيار من المعرض';
+
+  @override
+  String get scanProcessing => 'جاري التعرف على النص ومطابقة الأصناف محلياً...';
+
+  @override
+  String get scanReviewTitle => 'مراجعة الأصناف المستخرجة';
+
+  @override
+  String get scanEmptyNoText => 'لم يتم العثور على أي نصوص في الصورة المحددة';
+
+  @override
+  String get scanStatusVerified => 'مطابق ومؤكد';
+
+  @override
+  String get scanStatusNeedsReview => 'بحاجة لمراجعة';
+
+  @override
+  String get scanStatusUnmatched => 'صنف مخصص';
+
+  @override
+  String get scanSelectCandidate => 'اختيار الصنف المطابق';
+
+  @override
+  String get scanConfidence => 'نسبة الدقة';
+
+  @override
+  String get scanCreateQuotation => 'إنشاء عرض سعر';
+
+  @override
+  String get scanCreateInvoice => 'إنشاء فاتورة';
+
+  @override
+  String get scanAddManualItem => 'إضافة صنف جديد';
+
+  @override
+  String get scanDeleteItem => 'حذف البند';
+
+  @override
+  String get scanConfidenceWarning =>
+      'تنبيه: دقة المطابقة أقل من 85% أو توجد عدة أصناف مشابهة، يرجى التأكيد.';
+
+  @override
+  String get scanKeepCustomItem => 'الإبقاء كصنف مخصص';
+
+  @override
+  String get scanOriginalImage => 'معاينة المستند الممسوح';
+
+  @override
+  String get scanExtractButton => 'بدء المعالجة والاستخراج';
+
+  @override
+  String get scanTakeAnother => 'مسح ورقة أخرى';
 }

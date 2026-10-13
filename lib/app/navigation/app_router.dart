@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/home/presentation/home_screen.dart';
+import '../../features/invoices/domain/invoice.dart';
 import '../../features/invoices/presentation/invoice_form_screen.dart';
 import '../../features/invoices/presentation/invoices_screen.dart';
 import '../../features/products/presentation/products_screen.dart';
 import '../../features/quotations/domain/quotation.dart';
 import '../../features/quotations/presentation/quotation_form_screen.dart';
 import '../../features/quotations/presentation/quotations_screen.dart';
+import '../../features/scan/presentation/scan_review_screen.dart';
 import '../../features/scan/presentation/scan_screen.dart';
 import '../../features/settings/presentation/settings_screen.dart';
 import '../../l10n/app_localizations.dart';
@@ -88,6 +90,12 @@ GoRouter createAppRouter({String initialLocation = RouteNames.homePath}) {
         builder: (context, state) => const ScanScreen(),
       ),
       GoRoute(
+        name: RouteNames.scanReview,
+        path: RouteNames.scanReviewPath,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const ScanReviewScreen(),
+      ),
+      GoRoute(
         name: RouteNames.settings,
         path: RouteNames.settingsPath,
         parentNavigatorKey: rootNavigatorKey,
@@ -97,14 +105,31 @@ GoRouter createAppRouter({String initialLocation = RouteNames.homePath}) {
         name: RouteNames.quotationNew,
         path: RouteNames.quotationNewPath,
         parentNavigatorKey: rootNavigatorKey,
-        builder: (context, state) =>
-            QuotationFormScreen(existingQuotation: state.extra as Quotation?),
+        builder: (context, state) {
+          if (state.extra is Quotation) {
+            return QuotationFormScreen(
+              existingQuotation: state.extra as Quotation,
+            );
+          } else if (state.extra is List<QuotationItemDraft>) {
+            return QuotationFormScreen(
+              initialItems: state.extra as List<QuotationItemDraft>,
+            );
+          }
+          return const QuotationFormScreen();
+        },
       ),
       GoRoute(
         name: RouteNames.invoiceNew,
         path: RouteNames.invoiceNewPath,
         parentNavigatorKey: rootNavigatorKey,
-        builder: (context, state) => const InvoiceFormScreen(),
+        builder: (context, state) {
+          if (state.extra is List<InvoiceItemDraft>) {
+            return InvoiceFormScreen(
+              initialItems: state.extra as List<InvoiceItemDraft>,
+            );
+          }
+          return const InvoiceFormScreen();
+        },
       ),
     ],
     errorBuilder: (context, state) {

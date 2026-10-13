@@ -16,6 +16,15 @@ import '../../features/invoices/domain/pdf_invoice_generator.dart';
 import '../../features/quotations/application/quotations_controller.dart';
 import '../../features/quotations/data/drift_quotation_repository.dart';
 import '../../features/quotations/domain/quotation_repository.dart';
+import '../../features/scan/application/scan_controller.dart';
+import '../../features/scan/application/scan_state.dart';
+import '../../features/scan/data/drift_catalog_matcher.dart';
+import '../../features/scan/data/image_capture_service.dart';
+import '../../features/scan/data/mlkit_ocr_scanner.dart';
+import '../../features/scan/domain/catalog_matcher.dart';
+import '../../features/scan/domain/ocr_scanner.dart';
+import '../../features/scan/domain/plumbing_line_parser.dart';
+import '../../features/scan/domain/plumbing_text_parser.dart';
 import '../../features/settings/application/settings_controller.dart';
 import '../../features/settings/domain/app_settings.dart';
 import '../../features/settings/domain/settings_repository.dart';
@@ -122,3 +131,40 @@ final invoicesControllerProvider =
       final repository = ref.watch(invoiceRepositoryProvider);
       return InvoicesController(repository);
     });
+
+/// Provider for local image acquisition.
+final imageCaptureServiceProvider = Provider<ImageCaptureService>((ref) {
+  return const FilePickerImageCaptureService();
+});
+
+/// Provider for on-device OCR engine.
+final ocrScannerProvider = Provider<OcrScanner>((ref) {
+  return const MlKitOcrScanner();
+});
+
+/// Provider for Arabic plumbing text normalization and line parser.
+final plumbingTextParserProvider = Provider<PlumbingTextParser>((ref) {
+  return const DefaultPlumbingLineParser();
+});
+
+/// Provider for local SQLite catalog matching.
+final catalogMatcherProvider = Provider<CatalogMatcher>((ref) {
+  final db = ref.watch(appDatabaseProvider);
+  return DriftCatalogMatcher(db);
+});
+
+/// Provider for scan session controller.
+final scanControllerProvider = StateNotifierProvider<ScanController, ScanState>(
+  (ref) {
+    final imageCapture = ref.watch(imageCaptureServiceProvider);
+    final ocrScanner = ref.watch(ocrScannerProvider);
+    final textParser = ref.watch(plumbingTextParserProvider);
+    final catalogMatcher = ref.watch(catalogMatcherProvider);
+    return ScanController(
+      imageCaptureService: imageCapture,
+      ocrScanner: ocrScanner,
+      textParser: textParser,
+      catalogMatcher: catalogMatcher,
+    );
+  },
+);

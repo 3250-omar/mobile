@@ -23,6 +23,9 @@ class RouteNames {
   static const String scan = 'scan';
   static const String scanPath = '/scan';
 
+  static const String scanReview = 'scan_review';
+  static const String scanReviewPath = '/scan/review';
+
   static const String settings = 'settings';
   static const String settingsPath = '/settings';
 }
