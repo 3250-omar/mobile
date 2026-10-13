@@ -10,11 +10,15 @@ import 'package:offline_quotes/features/home/presentation/home_screen.dart';
 import 'package:offline_quotes/features/settings/domain/app_settings.dart';
 import 'package:offline_quotes/l10n/app_localizations.dart';
 
+import '../../support/fake_dashboard_repository.dart';
+
 void main() {
   Widget buildTestApp({required InitializationController controller}) {
     return ProviderScope(
       overrides: [
         initializationControllerProvider.overrideWith((ref) => controller),
+        dashboardRepositoryProvider
+            .overrideWithValue(FakeDashboardRepository()),
       ],
       child: const MaterialApp(
         localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -52,7 +56,7 @@ void main() {
 
       expect(find.byType(HomeScreen), findsOneWidget);
       expect(find.text('عروض الأسعار والفواتير'), findsOneWidget);
-      expect(find.text('العمل بدون إنترنت (100% محلي)'), findsOneWidget);
+      expect(find.text('100% دون إنترنت'), findsOneWidget);
     });
 
     testWidgets('displays Arabic error gate and retry button on failure', (

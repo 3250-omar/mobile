@@ -151,6 +151,20 @@
   "scanKeepCustomItem": "الإبقاء كصنف مخصص",
   "scanOriginalImage": "معاينة المستند الممسوح",
   "scanExtractButton": "بدء المعالجة والاستخراج",
-  "scanTakeAnother": "مسح ورقة أخرى"
+  "scanTakeAnother": "مسح ورقة أخرى",
+  "dashboardCatalogItems": "أصناف الكتالوج",
+  "dashboardActiveQuotations": "عروض أسعار نشطة",
+  "dashboardUnpaidReceivables": "مستحقات معلقة",
+  "dashboardCollectedRevenue": "إجمالي المحصل",
+  "dashboardQuickActions": "إجراءات سريعة",
+  "dashboardActionScan": "مسح كشف طلبية",
+  "dashboardActionNewQuotation": "عرض سعر جديد",
+  "dashboardActionNewInvoice": "فاتورة جديدة",
+  "dashboardActionCatalog": "دليل الأصناف",
+  "dashboardRecentActivity": "النشاط الأخير",
+  "dashboardRecentEmpty": "لا توجد معاملات تجارية مسجلة بعد",
+  "dashboardOfflineSecure": "100% دون إنترنت",
+  "dashboardWelcome": "مرحباً بك في تسعيرة"
 }
+
 

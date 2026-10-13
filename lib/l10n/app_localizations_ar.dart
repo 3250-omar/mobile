@@ -452,4 +452,43 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get scanTakeAnother => 'مسح ورقة أخرى';
+
+  @override
+  String get dashboardCatalogItems => 'أصناف الكتالوج';
+
+  @override
+  String get dashboardActiveQuotations => 'عروض أسعار نشطة';
+
+  @override
+  String get dashboardUnpaidReceivables => 'مستحقات معلقة';
+
+  @override
+  String get dashboardCollectedRevenue => 'إجمالي المحصل';
+
+  @override
+  String get dashboardQuickActions => 'إجراءات سريعة';
+
+  @override
+  String get dashboardActionScan => 'مسح كشف طلبية';
+
+  @override
+  String get dashboardActionNewQuotation => 'عرض سعر جديد';
+
+  @override
+  String get dashboardActionNewInvoice => 'فاتورة جديدة';
+
+  @override
+  String get dashboardActionCatalog => 'دليل الأصناف';
+
+  @override
+  String get dashboardRecentActivity => 'النشاط الأخير';
+
+  @override
+  String get dashboardRecentEmpty => 'لا توجد معاملات تجارية مسجلة بعد';
+
+  @override
+  String get dashboardOfflineSecure => '100% دون إنترنت';
+
+  @override
+  String get dashboardWelcome => 'مرحباً بك في تسعيرة';
 }

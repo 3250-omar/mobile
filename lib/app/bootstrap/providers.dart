@@ -8,6 +8,10 @@ import '../../features/products/application/catalog_controller.dart';
 import '../../features/products/application/import_controller.dart';
 import '../../features/products/data/drift_catalog_repository.dart';
 import '../../features/products/domain/catalog_repository.dart';
+import '../../features/home/application/dashboard_controller.dart';
+import '../../features/home/application/dashboard_state.dart';
+import '../../features/home/data/drift_dashboard_repository.dart';
+import '../../features/home/domain/dashboard_repository.dart';
 import '../../features/invoices/application/invoices_controller.dart';
 import '../../features/invoices/data/drift_invoice_repository.dart';
 import '../../features/invoices/data/pdf_invoice_generator.dart';
@@ -168,3 +172,16 @@ final scanControllerProvider = StateNotifierProvider<ScanController, ScanState>(
     );
   },
 );
+
+/// Provider for dashboard operational metrics and recent activities repository.
+final dashboardRepositoryProvider = Provider<DashboardRepository>((ref) {
+  final db = ref.watch(appDatabaseProvider);
+  return DriftDashboardRepository(db);
+});
+
+/// Provider for live home dashboard state controller.
+final dashboardControllerProvider =
+    StateNotifierProvider<DashboardController, DashboardState>((ref) {
+      final repository = ref.watch(dashboardRepositoryProvider);
+      return DashboardController(repository);
+    });

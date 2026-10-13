@@ -945,6 +945,84 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'مسح ورقة أخرى'**
   String get scanTakeAnother;
+
+  /// No description provided for @dashboardCatalogItems.
+  ///
+  /// In ar, this message translates to:
+  /// **'أصناف الكتالوج'**
+  String get dashboardCatalogItems;
+
+  /// No description provided for @dashboardActiveQuotations.
+  ///
+  /// In ar, this message translates to:
+  /// **'عروض أسعار نشطة'**
+  String get dashboardActiveQuotations;
+
+  /// No description provided for @dashboardUnpaidReceivables.
+  ///
+  /// In ar, this message translates to:
+  /// **'مستحقات معلقة'**
+  String get dashboardUnpaidReceivables;
+
+  /// No description provided for @dashboardCollectedRevenue.
+  ///
+  /// In ar, this message translates to:
+  /// **'إجمالي المحصل'**
+  String get dashboardCollectedRevenue;
+
+  /// No description provided for @dashboardQuickActions.
+  ///
+  /// In ar, this message translates to:
+  /// **'إجراءات سريعة'**
+  String get dashboardQuickActions;
+
+  /// No description provided for @dashboardActionScan.
+  ///
+  /// In ar, this message translates to:
+  /// **'مسح كشف طلبية'**
+  String get dashboardActionScan;
+
+  /// No description provided for @dashboardActionNewQuotation.
+  ///
+  /// In ar, this message translates to:
+  /// **'عرض سعر جديد'**
+  String get dashboardActionNewQuotation;
+
+  /// No description provided for @dashboardActionNewInvoice.
+  ///
+  /// In ar, this message translates to:
+  /// **'فاتورة جديدة'**
+  String get dashboardActionNewInvoice;
+
+  /// No description provided for @dashboardActionCatalog.
+  ///
+  /// In ar, this message translates to:
+  /// **'دليل الأصناف'**
+  String get dashboardActionCatalog;
+
+  /// No description provided for @dashboardRecentActivity.
+  ///
+  /// In ar, this message translates to:
+  /// **'النشاط الأخير'**
+  String get dashboardRecentActivity;
+
+  /// No description provided for @dashboardRecentEmpty.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد معاملات تجارية مسجلة بعد'**
+  String get dashboardRecentEmpty;
+
+  /// No description provided for @dashboardOfflineSecure.
+  ///
+  /// In ar, this message translates to:
+  /// **'100% دون إنترنت'**
+  String get dashboardOfflineSecure;
+
+  /// No description provided for @dashboardWelcome.
+  ///
+  /// In ar, this message translates to:
+  /// **'مرحباً بك في تسعيرة'**
+  String get dashboardWelcome;
 }
 
 class _AppLocalizationsDelegate

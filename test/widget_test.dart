@@ -8,6 +8,8 @@ import 'package:offline_quotes/features/home/presentation/home_screen.dart';
 import 'package:offline_quotes/features/settings/domain/app_settings.dart';
 import 'package:offline_quotes/features/settings/domain/settings_repository.dart';
 
+import 'support/fake_dashboard_repository.dart';
+
 class FakeSettingsRepo implements SettingsRepository {
   AppSettings current = AppSettings.defaults();
 
@@ -38,6 +40,8 @@ void main() {
           overrides: [
             initializationControllerProvider.overrideWith((ref) => controller),
             settingsRepositoryProvider.overrideWithValue(FakeSettingsRepo()),
+            dashboardRepositoryProvider
+                .overrideWithValue(FakeDashboardRepository()),
           ],
           child: const OfflineQuotesApp(),
         ),

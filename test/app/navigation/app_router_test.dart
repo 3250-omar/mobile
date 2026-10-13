@@ -15,6 +15,7 @@ import 'package:offline_quotes/features/settings/presentation/settings_screen.da
 import 'package:offline_quotes/l10n/app_localizations.dart';
 
 import '../../support/fake_catalog_repository.dart';
+import '../../support/fake_dashboard_repository.dart';
 import '../../support/fake_invoice_repository.dart';
 import '../../support/fake_quotation_repository.dart';
 
@@ -45,6 +46,8 @@ void main() {
           FakeQuotationRepository(),
         ),
         invoiceRepositoryProvider.overrideWithValue(FakeInvoiceRepository()),
+        dashboardRepositoryProvider
+            .overrideWithValue(FakeDashboardRepository()),
       ],
       child: MaterialApp.router(
         routerConfig: router,
