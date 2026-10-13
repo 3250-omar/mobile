@@ -17,6 +17,9 @@ class RouteNames {
   static const String invoices = 'invoices';
   static const String invoicesPath = '/invoices';
 
+  static const String invoiceNew = 'invoice_new';
+  static const String invoiceNewPath = '/invoices/new';
+
   static const String scan = 'scan';
   static const String scanPath = '/scan';
 

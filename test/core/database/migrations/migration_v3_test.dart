@@ -48,7 +48,7 @@ void main() {
 
       // 2. Open via AppDatabase, triggering onUpgrade from v2 to v3
       final appDb = AppDatabase(NativeDatabase.opened(rawDb));
-      expect(appDb.schemaVersion, equals(3));
+      expect(appDb.schemaVersion, greaterThanOrEqualTo(3));
 
       // 3. Verify pre-existing data is completely preserved
       final settings = await (appDb.select(appDb.appSettingsTable)).getSingle();

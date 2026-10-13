@@ -17,6 +17,7 @@ class QuotationCard extends StatelessWidget {
     this.onDuplicate,
     this.onDelete,
     this.onStatusChanged,
+    this.onConvertToInvoice,
   });
 
   final Quotation quotation;
@@ -25,6 +26,7 @@ class QuotationCard extends StatelessWidget {
   final VoidCallback? onDuplicate;
   final VoidCallback? onDelete;
   final ValueChanged<QuotationStatus>? onStatusChanged;
+  final VoidCallback? onConvertToInvoice;
 
   Color _getStatusColor(QuotationStatus status, bool isDark) {
     switch (status) {
@@ -141,6 +143,9 @@ class QuotationCard extends StatelessWidget {
                       case 'delete':
                         onDelete?.call();
                         break;
+                      case 'convert_to_invoice':
+                        onConvertToInvoice?.call();
+                        break;
                       case 'status_draft':
                         onStatusChanged?.call(QuotationStatus.draft);
                         break;
@@ -220,6 +225,25 @@ class QuotationCard extends StatelessWidget {
                             ],
                           ),
                         ),
+                      const PopupMenuDivider(),
+                    ],
+                    if (quotation.status !=
+                        QuotationStatus.convertedToInvoice) ...[
+                      const PopupMenuItem(
+                        value: 'convert_to_invoice',
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.receipt_long,
+                              size: 18,
+                              color: Colors.purple,
+                            ),
+                            SizedBox(width: 8),
+                            Text('تحويل لفاتورة'),
+                          ],
+                        ),
+                      ),
                       const PopupMenuDivider(),
                     ],
                     const PopupMenuItem(

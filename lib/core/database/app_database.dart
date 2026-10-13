@@ -3,6 +3,7 @@ import 'package:drift/drift.dart';
 import 'database_connection.dart';
 import 'migrations/migration_strategy.dart';
 import 'tables/app_settings_table.dart';
+import 'tables/invoices_table.dart';
 import 'tables/products_table.dart';
 import 'tables/quotations_table.dart';
 
@@ -10,13 +11,16 @@ part 'app_database.g.dart';
 
 /// Central typed SQLite database managed via Drift.
 ///
-/// Contains foundational infrastructure tables, products catalog, and quotations.
+/// Contains foundational infrastructure tables, products catalog, quotations, and invoices.
 @DriftDatabase(
   tables: [
     AppSettingsTable,
     ProductsTable,
     QuotationsTable,
     QuotationItemsTable,
+    InvoicesTable,
+    InvoiceItemsTable,
+    InvoicePaymentsTable,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -24,7 +28,7 @@ class AppDatabase extends _$AppDatabase {
     : super(executor ?? DatabaseConnectionFactory.createConnection());
 
   @override
-  int get schemaVersion => 3;
+  int get schemaVersion => 4;
 
   @override
   MigrationStrategy get migration => buildMigrationStrategy(database: this);

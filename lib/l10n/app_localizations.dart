@@ -675,6 +675,162 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'بنود وأصناف عرض السعر'**
   String get quotationItemsTitle;
+
+  /// No description provided for @invoiceNew.
+  ///
+  /// In ar, this message translates to:
+  /// **'فاتورة جديدة'**
+  String get invoiceNew;
+
+  /// No description provided for @invoiceCustomerName.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم العميل أو المؤسسة'**
+  String get invoiceCustomerName;
+
+  /// No description provided for @invoiceCustomerPhone.
+  ///
+  /// In ar, this message translates to:
+  /// **'رقم الهاتف'**
+  String get invoiceCustomerPhone;
+
+  /// No description provided for @invoiceNotes.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملاحظات الفاتورة'**
+  String get invoiceNotes;
+
+  /// No description provided for @invoiceSubtotal.
+  ///
+  /// In ar, this message translates to:
+  /// **'المجموع الفرعي'**
+  String get invoiceSubtotal;
+
+  /// No description provided for @invoiceDiscount.
+  ///
+  /// In ar, this message translates to:
+  /// **'خصم إضافي'**
+  String get invoiceDiscount;
+
+  /// No description provided for @invoiceTax.
+  ///
+  /// In ar, this message translates to:
+  /// **'ضريبة القيمة المضافة'**
+  String get invoiceTax;
+
+  /// No description provided for @invoiceGrandTotal.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإجمالي النهائي المطلوب'**
+  String get invoiceGrandTotal;
+
+  /// No description provided for @invoicePaidAmount.
+  ///
+  /// In ar, this message translates to:
+  /// **'المبلغ المسدد'**
+  String get invoicePaidAmount;
+
+  /// No description provided for @invoiceRemainingBalance.
+  ///
+  /// In ar, this message translates to:
+  /// **'المبلغ المتبقي'**
+  String get invoiceRemainingBalance;
+
+  /// No description provided for @invoiceRecordPayment.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسجيل دفعة'**
+  String get invoiceRecordPayment;
+
+  /// No description provided for @invoiceSave.
+  ///
+  /// In ar, this message translates to:
+  /// **'حفظ الفاتورة'**
+  String get invoiceSave;
+
+  /// No description provided for @invoiceDelete.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف الفاتورة'**
+  String get invoiceDelete;
+
+  /// No description provided for @invoiceCancel.
+  ///
+  /// In ar, this message translates to:
+  /// **'إلغاء الفاتورة'**
+  String get invoiceCancel;
+
+  /// No description provided for @invoicePrintA4.
+  ///
+  /// In ar, this message translates to:
+  /// **'طباعة فاتورة A4'**
+  String get invoicePrintA4;
+
+  /// No description provided for @invoicePrintReceipt.
+  ///
+  /// In ar, this message translates to:
+  /// **'إيصال حراري (80 مم)'**
+  String get invoicePrintReceipt;
+
+  /// No description provided for @invoiceStatusUnpaid.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير مسدد'**
+  String get invoiceStatusUnpaid;
+
+  /// No description provided for @invoiceStatusPartiallyPaid.
+  ///
+  /// In ar, this message translates to:
+  /// **'مسدد جزئياً'**
+  String get invoiceStatusPartiallyPaid;
+
+  /// No description provided for @invoiceStatusPaid.
+  ///
+  /// In ar, this message translates to:
+  /// **'مسدد بالكامل'**
+  String get invoiceStatusPaid;
+
+  /// No description provided for @invoiceStatusCancelled.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملغي'**
+  String get invoiceStatusCancelled;
+
+  /// No description provided for @invoiceEmptyTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد فواتير مبيعات مسجلة'**
+  String get invoiceEmptyTitle;
+
+  /// No description provided for @invoiceEmptyMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'ابدأ بإنشاء فاتورة جديدة أو تحويل أحد عروض الأسعار المقبولة'**
+  String get invoiceEmptyMessage;
+
+  /// No description provided for @invoiceItemsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'بنود وأصناف الفاتورة'**
+  String get invoiceItemsTitle;
+
+  /// No description provided for @invoiceMetricsTotal.
+  ///
+  /// In ar, this message translates to:
+  /// **'الفواتير'**
+  String get invoiceMetricsTotal;
+
+  /// No description provided for @invoiceMetricsReceivables.
+  ///
+  /// In ar, this message translates to:
+  /// **'المستحقات'**
+  String get invoiceMetricsReceivables;
+
+  /// No description provided for @invoiceMetricsPaid.
+  ///
+  /// In ar, this message translates to:
+  /// **'المحصل'**
+  String get invoiceMetricsPaid;
 }
 
 class _AppLocalizationsDelegate

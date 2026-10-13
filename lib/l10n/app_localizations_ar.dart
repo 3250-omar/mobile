@@ -315,4 +315,83 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get quotationItemsTitle => 'بنود وأصناف عرض السعر';
+
+  @override
+  String get invoiceNew => 'فاتورة جديدة';
+
+  @override
+  String get invoiceCustomerName => 'اسم العميل أو المؤسسة';
+
+  @override
+  String get invoiceCustomerPhone => 'رقم الهاتف';
+
+  @override
+  String get invoiceNotes => 'ملاحظات الفاتورة';
+
+  @override
+  String get invoiceSubtotal => 'المجموع الفرعي';
+
+  @override
+  String get invoiceDiscount => 'خصم إضافي';
+
+  @override
+  String get invoiceTax => 'ضريبة القيمة المضافة';
+
+  @override
+  String get invoiceGrandTotal => 'الإجمالي النهائي المطلوب';
+
+  @override
+  String get invoicePaidAmount => 'المبلغ المسدد';
+
+  @override
+  String get invoiceRemainingBalance => 'المبلغ المتبقي';
+
+  @override
+  String get invoiceRecordPayment => 'تسجيل دفعة';
+
+  @override
+  String get invoiceSave => 'حفظ الفاتورة';
+
+  @override
+  String get invoiceDelete => 'حذف الفاتورة';
+
+  @override
+  String get invoiceCancel => 'إلغاء الفاتورة';
+
+  @override
+  String get invoicePrintA4 => 'طباعة فاتورة A4';
+
+  @override
+  String get invoicePrintReceipt => 'إيصال حراري (80 مم)';
+
+  @override
+  String get invoiceStatusUnpaid => 'غير مسدد';
+
+  @override
+  String get invoiceStatusPartiallyPaid => 'مسدد جزئياً';
+
+  @override
+  String get invoiceStatusPaid => 'مسدد بالكامل';
+
+  @override
+  String get invoiceStatusCancelled => 'ملغي';
+
+  @override
+  String get invoiceEmptyTitle => 'لا توجد فواتير مبيعات مسجلة';
+
+  @override
+  String get invoiceEmptyMessage =>
+      'ابدأ بإنشاء فاتورة جديدة أو تحويل أحد عروض الأسعار المقبولة';
+
+  @override
+  String get invoiceItemsTitle => 'بنود وأصناف الفاتورة';
+
+  @override
+  String get invoiceMetricsTotal => 'الفواتير';
+
+  @override
+  String get invoiceMetricsReceivables => 'المستحقات';
+
+  @override
+  String get invoiceMetricsPaid => 'المحصل';
 }

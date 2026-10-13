@@ -15,6 +15,7 @@ import 'package:offline_quotes/features/settings/presentation/settings_screen.da
 import 'package:offline_quotes/l10n/app_localizations.dart';
 
 import '../../support/fake_catalog_repository.dart';
+import '../../support/fake_invoice_repository.dart';
 import '../../support/fake_quotation_repository.dart';
 
 class _FakeSettingsRepo implements SettingsRepository {
@@ -43,6 +44,7 @@ void main() {
         quotationRepositoryProvider.overrideWithValue(
           FakeQuotationRepository(),
         ),
+        invoiceRepositoryProvider.overrideWithValue(FakeInvoiceRepository()),
       ],
       child: MaterialApp.router(
         routerConfig: router,

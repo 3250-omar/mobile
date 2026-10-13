@@ -136,6 +136,33 @@ class QuotationsScreen extends ConsumerWidget {
                               );
                             }
                           },
+                          onConvertToInvoice: () async {
+                            try {
+                              final inv = await ref
+                                  .read(invoiceRepositoryProvider)
+                                  .convertQuotationToInvoice(quotation.id);
+                              await controller.loadMetrics();
+                              if (context.mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'تم تحويل عرض السعر إلى فاتورة مبيعات (${inv.referenceNumber}) بنجاح',
+                                    ),
+                                    backgroundColor: Colors.purple.shade800,
+                                  ),
+                                );
+                              }
+                            } catch (e) {
+                              if (context.mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('تعذر تحويل عرض السعر: $e'),
+                                    backgroundColor: Colors.red.shade800,
+                                  ),
+                                );
+                              }
+                            }
+                          },
                           onDelete: () {
                             showDialog<void>(
                               context: context,

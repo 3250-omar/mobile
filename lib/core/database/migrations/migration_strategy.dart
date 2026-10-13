@@ -49,6 +49,22 @@ MigrationStrategy buildMigrationStrategy({
           }
         }
       }
+      if (from < 4) {
+        // Migrate schema from v3 to v4: create invoices, invoice_items, and invoice_payments tables and indices.
+        for (final entity in database.allSchemaEntities) {
+          if (entity is TableInfo &&
+              (entity.actualTableName == 'invoices' ||
+                  entity.actualTableName == 'invoice_items' ||
+                  entity.actualTableName == 'invoice_payments')) {
+            await m.createTable(entity);
+          } else if (entity is Index &&
+              (entity.entityName.startsWith('idx_invoices_') ||
+                  entity.entityName.startsWith('idx_invoice_items_') ||
+                  entity.entityName.startsWith('idx_invoice_payments_'))) {
+            await m.createIndex(entity);
+          }
+        }
+      }
     },
     beforeOpen: (OpeningDetails details) async {
       if (details.versionBefore != null &&

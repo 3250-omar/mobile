@@ -8,6 +8,11 @@ import '../../features/products/application/catalog_controller.dart';
 import '../../features/products/application/import_controller.dart';
 import '../../features/products/data/drift_catalog_repository.dart';
 import '../../features/products/domain/catalog_repository.dart';
+import '../../features/invoices/application/invoices_controller.dart';
+import '../../features/invoices/data/drift_invoice_repository.dart';
+import '../../features/invoices/data/pdf_invoice_generator.dart';
+import '../../features/invoices/domain/invoice_repository.dart';
+import '../../features/invoices/domain/pdf_invoice_generator.dart';
 import '../../features/quotations/application/quotations_controller.dart';
 import '../../features/quotations/data/drift_quotation_repository.dart';
 import '../../features/quotations/domain/quotation_repository.dart';
@@ -98,4 +103,22 @@ final quotationsControllerProvider =
     StateNotifierProvider<QuotationsController, QuotationsState>((ref) {
       final repository = ref.watch(quotationRepositoryProvider);
       return QuotationsController(repository);
+    });
+
+/// Provider for invoices repository.
+final invoiceRepositoryProvider = Provider<InvoiceRepository>((ref) {
+  final db = ref.watch(appDatabaseProvider);
+  return DriftInvoiceRepository(db);
+});
+
+/// Provider for 100% offline PDF invoice generator.
+final pdfInvoiceGeneratorProvider = Provider<PdfInvoiceGenerator>((ref) {
+  return DefaultPdfInvoiceGenerator();
+});
+
+/// Provider for invoices list and filter controller.
+final invoicesControllerProvider =
+    StateNotifierProvider<InvoicesController, InvoicesState>((ref) {
+      final repository = ref.watch(invoiceRepositoryProvider);
+      return InvoicesController(repository);
     });

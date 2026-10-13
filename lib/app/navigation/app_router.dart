@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/home/presentation/home_screen.dart';
+import '../../features/invoices/presentation/invoice_form_screen.dart';
 import '../../features/invoices/presentation/invoices_screen.dart';
 import '../../features/products/presentation/products_screen.dart';
 import '../../features/quotations/domain/quotation.dart';
@@ -98,6 +99,12 @@ GoRouter createAppRouter({String initialLocation = RouteNames.homePath}) {
         parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) =>
             QuotationFormScreen(existingQuotation: state.extra as Quotation?),
+      ),
+      GoRoute(
+        name: RouteNames.invoiceNew,
+        path: RouteNames.invoiceNewPath,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const InvoiceFormScreen(),
       ),
     ],
     errorBuilder: (context, state) {
