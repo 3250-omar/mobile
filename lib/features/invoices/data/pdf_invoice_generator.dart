@@ -1,9 +1,12 @@
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 
+import '../../../app/localization/bidi_text.dart';
+import '../../settings/domain/business_profile.dart';
 import '../domain/invoice.dart';
 import '../domain/pdf_invoice_generator.dart';
 
@@ -18,6 +21,7 @@ class DefaultPdfInvoiceGenerator implements PdfInvoiceGenerator {
   @override
   Future<Uint8List> generateInvoicePdf({
     required Invoice invoice,
+    BusinessProfile? businessProfile,
     bool isThermalReceipt = false,
   }) async {
     final regularFont = await _loadRegularFont();
@@ -25,7 +29,7 @@ class DefaultPdfInvoiceGenerator implements PdfInvoiceGenerator {
 
     final pdf = pw.Document(
       title: 'فاتورة ${invoice.referenceNumber}',
-      author: 'Offline Quotes App',
+      author: businessProfile?.businessName ?? 'Offline Quotes App',
     );
 
     final theme = pw.ThemeData.withFont(
@@ -42,6 +46,18 @@ class DefaultPdfInvoiceGenerator implements PdfInvoiceGenerator {
           )
         : PdfPageFormat.a4;
 
+    // Load store logo if available
+    pw.MemoryImage? logoImage;
+    if (businessProfile?.logoPath != null) {
+      try {
+        final logoFile = File(businessProfile!.logoPath!);
+        if (await logoFile.exists()) {
+          final bytes = await logoFile.readAsBytes();
+          logoImage = pw.MemoryImage(bytes);
+        }
+      } catch (_) {}
+    }
+
     final qrData =
         'INV:${invoice.referenceNumber}|DATE:${invoice.issueDate.toIso8601String()}|TOTAL:${invoice.grandTotalPiastres}|PAID:${invoice.paidAmountPiastres}|BAL:${invoice.remainingBalancePiastres}';
 
@@ -54,7 +70,7 @@ class DefaultPdfInvoiceGenerator implements PdfInvoiceGenerator {
           if (isThermalReceipt) {
             return _buildThermalReceipt(invoice, qrData);
           }
-          return _buildA4Invoice(invoice, qrData);
+          return _buildA4Invoice(invoice, qrData, businessProfile, logoImage);
         },
       ),
     );
@@ -98,11 +114,105 @@ class DefaultPdfInvoiceGenerator implements PdfInvoiceGenerator {
     }
   }
 
-  pw.Widget _buildA4Invoice(Invoice invoice, String qrData) {
+  pw.Widget _buildA4Invoice(
+    Invoice invoice,
+    String qrData,
+    BusinessProfile? profile,
+    pw.MemoryImage? logoImage,
+  ) {
+    final storeName = profile?.businessName.isNotEmpty == true
+        ? profile!.businessName
+        : 'تسعيرة للأدوات الصحية والسباكة';
+
     return pw.Column(
       crossAxisAlignment: pw.CrossAxisAlignment.stretch,
       children: [
-        // Header
+        // 1. Merchant Business Profile Header
+        pw.Row(
+          mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: pw.CrossAxisAlignment.start,
+          children: [
+            pw.Expanded(
+              child: pw.Column(
+                crossAxisAlignment: pw.CrossAxisAlignment.start,
+                children: [
+                  pw.Text(
+                    storeName,
+                    style: pw.TextStyle(
+                      fontSize: 18,
+                      fontWeight: pw.FontWeight.bold,
+                      color: PdfColors.blueGrey900,
+                    ),
+                  ),
+                  if (profile?.ownerName != null &&
+                      profile!.ownerName!.isNotEmpty) ...[
+                    pw.SizedBox(height: 2),
+                    pw.Text(
+                      'بإدارة: ${profile.ownerName!}',
+                      style: const pw.TextStyle(
+                        fontSize: 10,
+                        color: PdfColors.grey700,
+                      ),
+                    ),
+                  ],
+                  if (profile?.phonePrimary.isNotEmpty == true) ...[
+                    pw.SizedBox(height: 3),
+                    pw.Text(
+                      'هاتف: ${BidiText.wrapLtr(profile!.phonePrimary)}${profile.phoneSecondary != null && profile.phoneSecondary!.isNotEmpty ? ' • واتساب: ${BidiText.wrapLtr(profile.phoneSecondary!)}' : ''}',
+                      style: const pw.TextStyle(
+                        fontSize: 9,
+                        color: PdfColors.grey800,
+                      ),
+                    ),
+                  ],
+                  if (profile?.address != null || profile?.city != null)
+                    pw.Text(
+                      [
+                        if (profile?.city != null && profile!.city!.isNotEmpty)
+                          profile.city,
+                        if (profile?.address != null &&
+                            profile!.address!.isNotEmpty)
+                          profile.address,
+                      ].join(' - '),
+                      style: const pw.TextStyle(
+                        fontSize: 9,
+                        color: PdfColors.grey700,
+                      ),
+                    ),
+                  if (profile?.hasTaxCredentials == true) ...[
+                    pw.SizedBox(height: 2),
+                    pw.Text(
+                      [
+                        if (profile?.commercialRegister != null &&
+                            profile!.commercialRegister!.isNotEmpty)
+                          'س.ت: ${BidiText.wrapLtr(profile.commercialRegister!)}',
+                        if (profile?.taxNumber != null &&
+                            profile!.taxNumber!.isNotEmpty)
+                          'ب.ض: ${BidiText.wrapLtr(profile.taxNumber!)}',
+                      ].join(' | '),
+                      style: const pw.TextStyle(
+                        fontSize: 9,
+                        color: PdfColors.blueGrey700,
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+            if (logoImage != null)
+              pw.Container(
+                width: 55,
+                height: 55,
+                margin: const pw.EdgeInsets.only(right: 8),
+                child: pw.Image(logoImage, fit: pw.BoxFit.contain),
+              ),
+          ],
+        ),
+        pw.SizedBox(height: 10),
+        pw.Divider(color: PdfColors.blueGrey200, thickness: 1.5),
+        pw.SizedBox(height: 8),
+
+        // 2. Invoice Meta Bar
         pw.Row(
           mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
           crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -113,16 +223,16 @@ class DefaultPdfInvoiceGenerator implements PdfInvoiceGenerator {
                 pw.Text(
                   'فاتورة مبيعات ضريبية',
                   style: pw.TextStyle(
-                    fontSize: 22,
+                    fontSize: 16,
                     fontWeight: pw.FontWeight.bold,
                     color: PdfColors.blueGrey900,
                   ),
                 ),
-                pw.SizedBox(height: 4),
+                pw.SizedBox(height: 2),
                 pw.Text(
                   'رقم الفاتورة: ${invoice.referenceNumber}',
                   style: pw.TextStyle(
-                    fontSize: 14,
+                    fontSize: 12,
                     fontWeight: pw.FontWeight.bold,
                     color: PdfColors.blue800,
                   ),
@@ -130,7 +240,7 @@ class DefaultPdfInvoiceGenerator implements PdfInvoiceGenerator {
                 pw.Text(
                   'تاريخ الإصدار: ${invoice.issueDate.year}-${invoice.issueDate.month.toString().padLeft(2, '0')}-${invoice.issueDate.day.toString().padLeft(2, '0')}',
                   style: const pw.TextStyle(
-                    fontSize: 11,
+                    fontSize: 9.5,
                     color: PdfColors.grey700,
                   ),
                 ),
@@ -138,7 +248,7 @@ class DefaultPdfInvoiceGenerator implements PdfInvoiceGenerator {
                   pw.Text(
                     'تاريخ الاستحقاق: ${invoice.dueDate!.year}-${invoice.dueDate!.month.toString().padLeft(2, '0')}-${invoice.dueDate!.day.toString().padLeft(2, '0')}',
                     style: const pw.TextStyle(
-                      fontSize: 11,
+                      fontSize: 9.5,
                       color: PdfColors.grey700,
                     ),
                   ),
@@ -146,8 +256,8 @@ class DefaultPdfInvoiceGenerator implements PdfInvoiceGenerator {
             ),
             pw.Container(
               padding: const pw.EdgeInsets.symmetric(
-                horizontal: 12,
-                vertical: 6,
+                horizontal: 10,
+                vertical: 4,
               ),
               decoration: pw.BoxDecoration(
                 color: _getStatusColor(invoice.status),
@@ -155,12 +265,12 @@ class DefaultPdfInvoiceGenerator implements PdfInvoiceGenerator {
               ),
               child: pw.Text(
                 invoice.status.arabicLabel,
-                style: const pw.TextStyle(color: PdfColors.white, fontSize: 12),
+                style: const pw.TextStyle(color: PdfColors.white, fontSize: 10),
               ),
             ),
           ],
         ),
-        pw.SizedBox(height: 16),
+        pw.SizedBox(height: 12),
         pw.Divider(color: PdfColors.grey300),
         pw.SizedBox(height: 10),
 
@@ -351,6 +461,25 @@ class DefaultPdfInvoiceGenerator implements PdfInvoiceGenerator {
           pw.Text(
             'ملاحظات: ${invoice.notes}',
             style: const pw.TextStyle(fontSize: 10, color: PdfColors.grey700),
+          ),
+        ],
+
+        if (profile?.defaultInvoiceTerms != null &&
+            profile!.defaultInvoiceTerms!.isNotEmpty) ...[
+          pw.SizedBox(height: 8),
+          pw.Container(
+            padding: const pw.EdgeInsets.all(6),
+            decoration: const pw.BoxDecoration(
+              color: PdfColors.grey100,
+              borderRadius: pw.BorderRadius.all(pw.Radius.circular(4)),
+            ),
+            child: pw.Text(
+              'شروط البيع والاستبدال: ${profile.defaultInvoiceTerms!}',
+              style: const pw.TextStyle(
+                fontSize: 8.5,
+                color: PdfColors.grey800,
+              ),
+            ),
           ),
         ],
 

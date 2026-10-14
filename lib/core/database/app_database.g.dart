@@ -4635,6 +4635,835 @@ class InvoicePaymentCompanion extends UpdateCompanion<InvoicePaymentEntry> {
   }
 }
 
+class $BusinessProfilesTableTable extends BusinessProfilesTable
+    with TableInfo<$BusinessProfilesTableTable, BusinessProfileData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $BusinessProfilesTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    $customConstraints: 'NOT NULL CHECK (id = 1)',
+    defaultValue: const Constant(1),
+  );
+  static const VerificationMeta _businessNameMeta = const VerificationMeta(
+    'businessName',
+  );
+  @override
+  late final GeneratedColumn<String> businessName = GeneratedColumn<String>(
+    'business_name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _ownerNameMeta = const VerificationMeta(
+    'ownerName',
+  );
+  @override
+  late final GeneratedColumn<String> ownerName = GeneratedColumn<String>(
+    'owner_name',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _phonePrimaryMeta = const VerificationMeta(
+    'phonePrimary',
+  );
+  @override
+  late final GeneratedColumn<String> phonePrimary = GeneratedColumn<String>(
+    'phone_primary',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _phoneSecondaryMeta = const VerificationMeta(
+    'phoneSecondary',
+  );
+  @override
+  late final GeneratedColumn<String> phoneSecondary = GeneratedColumn<String>(
+    'phone_secondary',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _addressMeta = const VerificationMeta(
+    'address',
+  );
+  @override
+  late final GeneratedColumn<String> address = GeneratedColumn<String>(
+    'address',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _cityMeta = const VerificationMeta('city');
+  @override
+  late final GeneratedColumn<String> city = GeneratedColumn<String>(
+    'city',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _taxNumberMeta = const VerificationMeta(
+    'taxNumber',
+  );
+  @override
+  late final GeneratedColumn<String> taxNumber = GeneratedColumn<String>(
+    'tax_number',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _commercialRegisterMeta =
+      const VerificationMeta('commercialRegister');
+  @override
+  late final GeneratedColumn<String> commercialRegister =
+      GeneratedColumn<String>(
+        'commercial_register',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _logoPathMeta = const VerificationMeta(
+    'logoPath',
+  );
+  @override
+  late final GeneratedColumn<String> logoPath = GeneratedColumn<String>(
+    'logo_path',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _defaultQuotationNotesMeta =
+      const VerificationMeta('defaultQuotationNotes');
+  @override
+  late final GeneratedColumn<String> defaultQuotationNotes =
+      GeneratedColumn<String>(
+        'default_quotation_notes',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _defaultInvoiceTermsMeta =
+      const VerificationMeta('defaultInvoiceTerms');
+  @override
+  late final GeneratedColumn<String> defaultInvoiceTerms =
+      GeneratedColumn<String>(
+        'default_invoice_terms',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _updatedAtUtcMeta = const VerificationMeta(
+    'updatedAtUtc',
+  );
+  @override
+  late final GeneratedColumn<String> updatedAtUtc = GeneratedColumn<String>(
+    'updated_at_utc',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    businessName,
+    ownerName,
+    phonePrimary,
+    phoneSecondary,
+    address,
+    city,
+    taxNumber,
+    commercialRegister,
+    logoPath,
+    defaultQuotationNotes,
+    defaultInvoiceTerms,
+    updatedAtUtc,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'business_profiles';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<BusinessProfileData> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('business_name')) {
+      context.handle(
+        _businessNameMeta,
+        businessName.isAcceptableOrUnknown(
+          data['business_name']!,
+          _businessNameMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_businessNameMeta);
+    }
+    if (data.containsKey('owner_name')) {
+      context.handle(
+        _ownerNameMeta,
+        ownerName.isAcceptableOrUnknown(data['owner_name']!, _ownerNameMeta),
+      );
+    }
+    if (data.containsKey('phone_primary')) {
+      context.handle(
+        _phonePrimaryMeta,
+        phonePrimary.isAcceptableOrUnknown(
+          data['phone_primary']!,
+          _phonePrimaryMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_phonePrimaryMeta);
+    }
+    if (data.containsKey('phone_secondary')) {
+      context.handle(
+        _phoneSecondaryMeta,
+        phoneSecondary.isAcceptableOrUnknown(
+          data['phone_secondary']!,
+          _phoneSecondaryMeta,
+        ),
+      );
+    }
+    if (data.containsKey('address')) {
+      context.handle(
+        _addressMeta,
+        address.isAcceptableOrUnknown(data['address']!, _addressMeta),
+      );
+    }
+    if (data.containsKey('city')) {
+      context.handle(
+        _cityMeta,
+        city.isAcceptableOrUnknown(data['city']!, _cityMeta),
+      );
+    }
+    if (data.containsKey('tax_number')) {
+      context.handle(
+        _taxNumberMeta,
+        taxNumber.isAcceptableOrUnknown(data['tax_number']!, _taxNumberMeta),
+      );
+    }
+    if (data.containsKey('commercial_register')) {
+      context.handle(
+        _commercialRegisterMeta,
+        commercialRegister.isAcceptableOrUnknown(
+          data['commercial_register']!,
+          _commercialRegisterMeta,
+        ),
+      );
+    }
+    if (data.containsKey('logo_path')) {
+      context.handle(
+        _logoPathMeta,
+        logoPath.isAcceptableOrUnknown(data['logo_path']!, _logoPathMeta),
+      );
+    }
+    if (data.containsKey('default_quotation_notes')) {
+      context.handle(
+        _defaultQuotationNotesMeta,
+        defaultQuotationNotes.isAcceptableOrUnknown(
+          data['default_quotation_notes']!,
+          _defaultQuotationNotesMeta,
+        ),
+      );
+    }
+    if (data.containsKey('default_invoice_terms')) {
+      context.handle(
+        _defaultInvoiceTermsMeta,
+        defaultInvoiceTerms.isAcceptableOrUnknown(
+          data['default_invoice_terms']!,
+          _defaultInvoiceTermsMeta,
+        ),
+      );
+    }
+    if (data.containsKey('updated_at_utc')) {
+      context.handle(
+        _updatedAtUtcMeta,
+        updatedAtUtc.isAcceptableOrUnknown(
+          data['updated_at_utc']!,
+          _updatedAtUtcMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtUtcMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  BusinessProfileData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return BusinessProfileData(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      businessName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}business_name'],
+      )!,
+      ownerName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}owner_name'],
+      ),
+      phonePrimary: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}phone_primary'],
+      )!,
+      phoneSecondary: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}phone_secondary'],
+      ),
+      address: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}address'],
+      ),
+      city: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}city'],
+      ),
+      taxNumber: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tax_number'],
+      ),
+      commercialRegister: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}commercial_register'],
+      ),
+      logoPath: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}logo_path'],
+      ),
+      defaultQuotationNotes: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}default_quotation_notes'],
+      ),
+      defaultInvoiceTerms: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}default_invoice_terms'],
+      ),
+      updatedAtUtc: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_at_utc'],
+      )!,
+    );
+  }
+
+  @override
+  $BusinessProfilesTableTable createAlias(String alias) {
+    return $BusinessProfilesTableTable(attachedDatabase, alias);
+  }
+}
+
+class BusinessProfileData extends DataClass
+    implements Insertable<BusinessProfileData> {
+  /// Primary key singleton constraint: id is always 1.
+  final int id;
+
+  /// Business / store trade name (e.g. مؤسسة الأمل للأدوات الصحية).
+  final String businessName;
+
+  /// Responsible merchant / owner name.
+  final String? ownerName;
+
+  /// Primary contact phone number.
+  final String phonePrimary;
+
+  /// Secondary phone number or WhatsApp.
+  final String? phoneSecondary;
+
+  /// Store physical address / street.
+  final String? address;
+
+  /// City / governorate (e.g. المنصورة، الدقهلية).
+  final String? city;
+
+  /// Tax card number (البطاقة الضريبية).
+  final String? taxNumber;
+
+  /// Commercial register number (السجل التجاري).
+  final String? commercialRegister;
+
+  /// Local sandboxed relative file path for store logo.
+  final String? logoPath;
+
+  /// Default quotation terms and validity note printed on PDF.
+  final String? defaultQuotationNotes;
+
+  /// Default invoice terms, warranty, and return policy printed on PDF.
+  final String? defaultInvoiceTerms;
+
+  /// Last updated UTC instant formatted as ISO-8601 string.
+  final String updatedAtUtc;
+  const BusinessProfileData({
+    required this.id,
+    required this.businessName,
+    this.ownerName,
+    required this.phonePrimary,
+    this.phoneSecondary,
+    this.address,
+    this.city,
+    this.taxNumber,
+    this.commercialRegister,
+    this.logoPath,
+    this.defaultQuotationNotes,
+    this.defaultInvoiceTerms,
+    required this.updatedAtUtc,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['business_name'] = Variable<String>(businessName);
+    if (!nullToAbsent || ownerName != null) {
+      map['owner_name'] = Variable<String>(ownerName);
+    }
+    map['phone_primary'] = Variable<String>(phonePrimary);
+    if (!nullToAbsent || phoneSecondary != null) {
+      map['phone_secondary'] = Variable<String>(phoneSecondary);
+    }
+    if (!nullToAbsent || address != null) {
+      map['address'] = Variable<String>(address);
+    }
+    if (!nullToAbsent || city != null) {
+      map['city'] = Variable<String>(city);
+    }
+    if (!nullToAbsent || taxNumber != null) {
+      map['tax_number'] = Variable<String>(taxNumber);
+    }
+    if (!nullToAbsent || commercialRegister != null) {
+      map['commercial_register'] = Variable<String>(commercialRegister);
+    }
+    if (!nullToAbsent || logoPath != null) {
+      map['logo_path'] = Variable<String>(logoPath);
+    }
+    if (!nullToAbsent || defaultQuotationNotes != null) {
+      map['default_quotation_notes'] = Variable<String>(defaultQuotationNotes);
+    }
+    if (!nullToAbsent || defaultInvoiceTerms != null) {
+      map['default_invoice_terms'] = Variable<String>(defaultInvoiceTerms);
+    }
+    map['updated_at_utc'] = Variable<String>(updatedAtUtc);
+    return map;
+  }
+
+  BusinessProfileCompanion toCompanion(bool nullToAbsent) {
+    return BusinessProfileCompanion(
+      id: Value(id),
+      businessName: Value(businessName),
+      ownerName: ownerName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(ownerName),
+      phonePrimary: Value(phonePrimary),
+      phoneSecondary: phoneSecondary == null && nullToAbsent
+          ? const Value.absent()
+          : Value(phoneSecondary),
+      address: address == null && nullToAbsent
+          ? const Value.absent()
+          : Value(address),
+      city: city == null && nullToAbsent ? const Value.absent() : Value(city),
+      taxNumber: taxNumber == null && nullToAbsent
+          ? const Value.absent()
+          : Value(taxNumber),
+      commercialRegister: commercialRegister == null && nullToAbsent
+          ? const Value.absent()
+          : Value(commercialRegister),
+      logoPath: logoPath == null && nullToAbsent
+          ? const Value.absent()
+          : Value(logoPath),
+      defaultQuotationNotes: defaultQuotationNotes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(defaultQuotationNotes),
+      defaultInvoiceTerms: defaultInvoiceTerms == null && nullToAbsent
+          ? const Value.absent()
+          : Value(defaultInvoiceTerms),
+      updatedAtUtc: Value(updatedAtUtc),
+    );
+  }
+
+  factory BusinessProfileData.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return BusinessProfileData(
+      id: serializer.fromJson<int>(json['id']),
+      businessName: serializer.fromJson<String>(json['businessName']),
+      ownerName: serializer.fromJson<String?>(json['ownerName']),
+      phonePrimary: serializer.fromJson<String>(json['phonePrimary']),
+      phoneSecondary: serializer.fromJson<String?>(json['phoneSecondary']),
+      address: serializer.fromJson<String?>(json['address']),
+      city: serializer.fromJson<String?>(json['city']),
+      taxNumber: serializer.fromJson<String?>(json['taxNumber']),
+      commercialRegister: serializer.fromJson<String?>(
+        json['commercialRegister'],
+      ),
+      logoPath: serializer.fromJson<String?>(json['logoPath']),
+      defaultQuotationNotes: serializer.fromJson<String?>(
+        json['defaultQuotationNotes'],
+      ),
+      defaultInvoiceTerms: serializer.fromJson<String?>(
+        json['defaultInvoiceTerms'],
+      ),
+      updatedAtUtc: serializer.fromJson<String>(json['updatedAtUtc']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'businessName': serializer.toJson<String>(businessName),
+      'ownerName': serializer.toJson<String?>(ownerName),
+      'phonePrimary': serializer.toJson<String>(phonePrimary),
+      'phoneSecondary': serializer.toJson<String?>(phoneSecondary),
+      'address': serializer.toJson<String?>(address),
+      'city': serializer.toJson<String?>(city),
+      'taxNumber': serializer.toJson<String?>(taxNumber),
+      'commercialRegister': serializer.toJson<String?>(commercialRegister),
+      'logoPath': serializer.toJson<String?>(logoPath),
+      'defaultQuotationNotes': serializer.toJson<String?>(
+        defaultQuotationNotes,
+      ),
+      'defaultInvoiceTerms': serializer.toJson<String?>(defaultInvoiceTerms),
+      'updatedAtUtc': serializer.toJson<String>(updatedAtUtc),
+    };
+  }
+
+  BusinessProfileData copyWith({
+    int? id,
+    String? businessName,
+    Value<String?> ownerName = const Value.absent(),
+    String? phonePrimary,
+    Value<String?> phoneSecondary = const Value.absent(),
+    Value<String?> address = const Value.absent(),
+    Value<String?> city = const Value.absent(),
+    Value<String?> taxNumber = const Value.absent(),
+    Value<String?> commercialRegister = const Value.absent(),
+    Value<String?> logoPath = const Value.absent(),
+    Value<String?> defaultQuotationNotes = const Value.absent(),
+    Value<String?> defaultInvoiceTerms = const Value.absent(),
+    String? updatedAtUtc,
+  }) => BusinessProfileData(
+    id: id ?? this.id,
+    businessName: businessName ?? this.businessName,
+    ownerName: ownerName.present ? ownerName.value : this.ownerName,
+    phonePrimary: phonePrimary ?? this.phonePrimary,
+    phoneSecondary: phoneSecondary.present
+        ? phoneSecondary.value
+        : this.phoneSecondary,
+    address: address.present ? address.value : this.address,
+    city: city.present ? city.value : this.city,
+    taxNumber: taxNumber.present ? taxNumber.value : this.taxNumber,
+    commercialRegister: commercialRegister.present
+        ? commercialRegister.value
+        : this.commercialRegister,
+    logoPath: logoPath.present ? logoPath.value : this.logoPath,
+    defaultQuotationNotes: defaultQuotationNotes.present
+        ? defaultQuotationNotes.value
+        : this.defaultQuotationNotes,
+    defaultInvoiceTerms: defaultInvoiceTerms.present
+        ? defaultInvoiceTerms.value
+        : this.defaultInvoiceTerms,
+    updatedAtUtc: updatedAtUtc ?? this.updatedAtUtc,
+  );
+  BusinessProfileData copyWithCompanion(BusinessProfileCompanion data) {
+    return BusinessProfileData(
+      id: data.id.present ? data.id.value : this.id,
+      businessName: data.businessName.present
+          ? data.businessName.value
+          : this.businessName,
+      ownerName: data.ownerName.present ? data.ownerName.value : this.ownerName,
+      phonePrimary: data.phonePrimary.present
+          ? data.phonePrimary.value
+          : this.phonePrimary,
+      phoneSecondary: data.phoneSecondary.present
+          ? data.phoneSecondary.value
+          : this.phoneSecondary,
+      address: data.address.present ? data.address.value : this.address,
+      city: data.city.present ? data.city.value : this.city,
+      taxNumber: data.taxNumber.present ? data.taxNumber.value : this.taxNumber,
+      commercialRegister: data.commercialRegister.present
+          ? data.commercialRegister.value
+          : this.commercialRegister,
+      logoPath: data.logoPath.present ? data.logoPath.value : this.logoPath,
+      defaultQuotationNotes: data.defaultQuotationNotes.present
+          ? data.defaultQuotationNotes.value
+          : this.defaultQuotationNotes,
+      defaultInvoiceTerms: data.defaultInvoiceTerms.present
+          ? data.defaultInvoiceTerms.value
+          : this.defaultInvoiceTerms,
+      updatedAtUtc: data.updatedAtUtc.present
+          ? data.updatedAtUtc.value
+          : this.updatedAtUtc,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('BusinessProfileData(')
+          ..write('id: $id, ')
+          ..write('businessName: $businessName, ')
+          ..write('ownerName: $ownerName, ')
+          ..write('phonePrimary: $phonePrimary, ')
+          ..write('phoneSecondary: $phoneSecondary, ')
+          ..write('address: $address, ')
+          ..write('city: $city, ')
+          ..write('taxNumber: $taxNumber, ')
+          ..write('commercialRegister: $commercialRegister, ')
+          ..write('logoPath: $logoPath, ')
+          ..write('defaultQuotationNotes: $defaultQuotationNotes, ')
+          ..write('defaultInvoiceTerms: $defaultInvoiceTerms, ')
+          ..write('updatedAtUtc: $updatedAtUtc')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    businessName,
+    ownerName,
+    phonePrimary,
+    phoneSecondary,
+    address,
+    city,
+    taxNumber,
+    commercialRegister,
+    logoPath,
+    defaultQuotationNotes,
+    defaultInvoiceTerms,
+    updatedAtUtc,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is BusinessProfileData &&
+          other.id == this.id &&
+          other.businessName == this.businessName &&
+          other.ownerName == this.ownerName &&
+          other.phonePrimary == this.phonePrimary &&
+          other.phoneSecondary == this.phoneSecondary &&
+          other.address == this.address &&
+          other.city == this.city &&
+          other.taxNumber == this.taxNumber &&
+          other.commercialRegister == this.commercialRegister &&
+          other.logoPath == this.logoPath &&
+          other.defaultQuotationNotes == this.defaultQuotationNotes &&
+          other.defaultInvoiceTerms == this.defaultInvoiceTerms &&
+          other.updatedAtUtc == this.updatedAtUtc);
+}
+
+class BusinessProfileCompanion extends UpdateCompanion<BusinessProfileData> {
+  final Value<int> id;
+  final Value<String> businessName;
+  final Value<String?> ownerName;
+  final Value<String> phonePrimary;
+  final Value<String?> phoneSecondary;
+  final Value<String?> address;
+  final Value<String?> city;
+  final Value<String?> taxNumber;
+  final Value<String?> commercialRegister;
+  final Value<String?> logoPath;
+  final Value<String?> defaultQuotationNotes;
+  final Value<String?> defaultInvoiceTerms;
+  final Value<String> updatedAtUtc;
+  const BusinessProfileCompanion({
+    this.id = const Value.absent(),
+    this.businessName = const Value.absent(),
+    this.ownerName = const Value.absent(),
+    this.phonePrimary = const Value.absent(),
+    this.phoneSecondary = const Value.absent(),
+    this.address = const Value.absent(),
+    this.city = const Value.absent(),
+    this.taxNumber = const Value.absent(),
+    this.commercialRegister = const Value.absent(),
+    this.logoPath = const Value.absent(),
+    this.defaultQuotationNotes = const Value.absent(),
+    this.defaultInvoiceTerms = const Value.absent(),
+    this.updatedAtUtc = const Value.absent(),
+  });
+  BusinessProfileCompanion.insert({
+    this.id = const Value.absent(),
+    required String businessName,
+    this.ownerName = const Value.absent(),
+    required String phonePrimary,
+    this.phoneSecondary = const Value.absent(),
+    this.address = const Value.absent(),
+    this.city = const Value.absent(),
+    this.taxNumber = const Value.absent(),
+    this.commercialRegister = const Value.absent(),
+    this.logoPath = const Value.absent(),
+    this.defaultQuotationNotes = const Value.absent(),
+    this.defaultInvoiceTerms = const Value.absent(),
+    required String updatedAtUtc,
+  }) : businessName = Value(businessName),
+       phonePrimary = Value(phonePrimary),
+       updatedAtUtc = Value(updatedAtUtc);
+  static Insertable<BusinessProfileData> custom({
+    Expression<int>? id,
+    Expression<String>? businessName,
+    Expression<String>? ownerName,
+    Expression<String>? phonePrimary,
+    Expression<String>? phoneSecondary,
+    Expression<String>? address,
+    Expression<String>? city,
+    Expression<String>? taxNumber,
+    Expression<String>? commercialRegister,
+    Expression<String>? logoPath,
+    Expression<String>? defaultQuotationNotes,
+    Expression<String>? defaultInvoiceTerms,
+    Expression<String>? updatedAtUtc,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (businessName != null) 'business_name': businessName,
+      if (ownerName != null) 'owner_name': ownerName,
+      if (phonePrimary != null) 'phone_primary': phonePrimary,
+      if (phoneSecondary != null) 'phone_secondary': phoneSecondary,
+      if (address != null) 'address': address,
+      if (city != null) 'city': city,
+      if (taxNumber != null) 'tax_number': taxNumber,
+      if (commercialRegister != null) 'commercial_register': commercialRegister,
+      if (logoPath != null) 'logo_path': logoPath,
+      if (defaultQuotationNotes != null)
+        'default_quotation_notes': defaultQuotationNotes,
+      if (defaultInvoiceTerms != null)
+        'default_invoice_terms': defaultInvoiceTerms,
+      if (updatedAtUtc != null) 'updated_at_utc': updatedAtUtc,
+    });
+  }
+
+  BusinessProfileCompanion copyWith({
+    Value<int>? id,
+    Value<String>? businessName,
+    Value<String?>? ownerName,
+    Value<String>? phonePrimary,
+    Value<String?>? phoneSecondary,
+    Value<String?>? address,
+    Value<String?>? city,
+    Value<String?>? taxNumber,
+    Value<String?>? commercialRegister,
+    Value<String?>? logoPath,
+    Value<String?>? defaultQuotationNotes,
+    Value<String?>? defaultInvoiceTerms,
+    Value<String>? updatedAtUtc,
+  }) {
+    return BusinessProfileCompanion(
+      id: id ?? this.id,
+      businessName: businessName ?? this.businessName,
+      ownerName: ownerName ?? this.ownerName,
+      phonePrimary: phonePrimary ?? this.phonePrimary,
+      phoneSecondary: phoneSecondary ?? this.phoneSecondary,
+      address: address ?? this.address,
+      city: city ?? this.city,
+      taxNumber: taxNumber ?? this.taxNumber,
+      commercialRegister: commercialRegister ?? this.commercialRegister,
+      logoPath: logoPath ?? this.logoPath,
+      defaultQuotationNotes:
+          defaultQuotationNotes ?? this.defaultQuotationNotes,
+      defaultInvoiceTerms: defaultInvoiceTerms ?? this.defaultInvoiceTerms,
+      updatedAtUtc: updatedAtUtc ?? this.updatedAtUtc,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (businessName.present) {
+      map['business_name'] = Variable<String>(businessName.value);
+    }
+    if (ownerName.present) {
+      map['owner_name'] = Variable<String>(ownerName.value);
+    }
+    if (phonePrimary.present) {
+      map['phone_primary'] = Variable<String>(phonePrimary.value);
+    }
+    if (phoneSecondary.present) {
+      map['phone_secondary'] = Variable<String>(phoneSecondary.value);
+    }
+    if (address.present) {
+      map['address'] = Variable<String>(address.value);
+    }
+    if (city.present) {
+      map['city'] = Variable<String>(city.value);
+    }
+    if (taxNumber.present) {
+      map['tax_number'] = Variable<String>(taxNumber.value);
+    }
+    if (commercialRegister.present) {
+      map['commercial_register'] = Variable<String>(commercialRegister.value);
+    }
+    if (logoPath.present) {
+      map['logo_path'] = Variable<String>(logoPath.value);
+    }
+    if (defaultQuotationNotes.present) {
+      map['default_quotation_notes'] = Variable<String>(
+        defaultQuotationNotes.value,
+      );
+    }
+    if (defaultInvoiceTerms.present) {
+      map['default_invoice_terms'] = Variable<String>(
+        defaultInvoiceTerms.value,
+      );
+    }
+    if (updatedAtUtc.present) {
+      map['updated_at_utc'] = Variable<String>(updatedAtUtc.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('BusinessProfileCompanion(')
+          ..write('id: $id, ')
+          ..write('businessName: $businessName, ')
+          ..write('ownerName: $ownerName, ')
+          ..write('phonePrimary: $phonePrimary, ')
+          ..write('phoneSecondary: $phoneSecondary, ')
+          ..write('address: $address, ')
+          ..write('city: $city, ')
+          ..write('taxNumber: $taxNumber, ')
+          ..write('commercialRegister: $commercialRegister, ')
+          ..write('logoPath: $logoPath, ')
+          ..write('defaultQuotationNotes: $defaultQuotationNotes, ')
+          ..write('defaultInvoiceTerms: $defaultInvoiceTerms, ')
+          ..write('updatedAtUtc: $updatedAtUtc')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -4652,6 +5481,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $InvoiceItemsTableTable(this);
   late final $InvoicePaymentsTableTable invoicePaymentsTable =
       $InvoicePaymentsTableTable(this);
+  late final $BusinessProfilesTableTable businessProfilesTable =
+      $BusinessProfilesTableTable(this);
   late final Index idxAppSettingsId = Index(
     'idx_app_settings_id',
     'CREATE INDEX idx_app_settings_id ON app_settings (id)',
@@ -4704,6 +5535,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     'idx_invoice_payments_invoice',
     'CREATE INDEX idx_invoice_payments_invoice ON invoice_payments (invoice_id)',
   );
+  late final Index idxBusinessProfilesId = Index(
+    'idx_business_profiles_id',
+    'CREATE INDEX idx_business_profiles_id ON business_profiles (id)',
+  );
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -4716,6 +5551,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     invoicesTable,
     invoiceItemsTable,
     invoicePaymentsTable,
+    businessProfilesTable,
     idxAppSettingsId,
     idxProductsCode,
     idxProductsCategory,
@@ -4729,6 +5565,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     idxInvoicesStatus,
     idxInvoiceItemsInvoice,
     idxInvoicePaymentsInvoice,
+    idxBusinessProfilesId,
   ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
@@ -8285,6 +9122,396 @@ typedef $$InvoicePaymentsTableTableProcessedTableManager =
       InvoicePaymentEntry,
       PrefetchHooks Function({bool invoiceId})
     >;
+typedef $$BusinessProfilesTableTableCreateCompanionBuilder =
+    BusinessProfileCompanion Function({
+      Value<int> id,
+      required String businessName,
+      Value<String?> ownerName,
+      required String phonePrimary,
+      Value<String?> phoneSecondary,
+      Value<String?> address,
+      Value<String?> city,
+      Value<String?> taxNumber,
+      Value<String?> commercialRegister,
+      Value<String?> logoPath,
+      Value<String?> defaultQuotationNotes,
+      Value<String?> defaultInvoiceTerms,
+      required String updatedAtUtc,
+    });
+typedef $$BusinessProfilesTableTableUpdateCompanionBuilder =
+    BusinessProfileCompanion Function({
+      Value<int> id,
+      Value<String> businessName,
+      Value<String?> ownerName,
+      Value<String> phonePrimary,
+      Value<String?> phoneSecondary,
+      Value<String?> address,
+      Value<String?> city,
+      Value<String?> taxNumber,
+      Value<String?> commercialRegister,
+      Value<String?> logoPath,
+      Value<String?> defaultQuotationNotes,
+      Value<String?> defaultInvoiceTerms,
+      Value<String> updatedAtUtc,
+    });
+
+class $$BusinessProfilesTableTableFilterComposer
+    extends Composer<_$AppDatabase, $BusinessProfilesTableTable> {
+  $$BusinessProfilesTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get businessName => $composableBuilder(
+    column: $table.businessName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ownerName => $composableBuilder(
+    column: $table.ownerName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get phonePrimary => $composableBuilder(
+    column: $table.phonePrimary,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get phoneSecondary => $composableBuilder(
+    column: $table.phoneSecondary,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get address => $composableBuilder(
+    column: $table.address,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get city => $composableBuilder(
+    column: $table.city,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get taxNumber => $composableBuilder(
+    column: $table.taxNumber,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get commercialRegister => $composableBuilder(
+    column: $table.commercialRegister,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get logoPath => $composableBuilder(
+    column: $table.logoPath,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get defaultQuotationNotes => $composableBuilder(
+    column: $table.defaultQuotationNotes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get defaultInvoiceTerms => $composableBuilder(
+    column: $table.defaultInvoiceTerms,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedAtUtc => $composableBuilder(
+    column: $table.updatedAtUtc,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$BusinessProfilesTableTableOrderingComposer
+    extends Composer<_$AppDatabase, $BusinessProfilesTableTable> {
+  $$BusinessProfilesTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get businessName => $composableBuilder(
+    column: $table.businessName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ownerName => $composableBuilder(
+    column: $table.ownerName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get phonePrimary => $composableBuilder(
+    column: $table.phonePrimary,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get phoneSecondary => $composableBuilder(
+    column: $table.phoneSecondary,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get address => $composableBuilder(
+    column: $table.address,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get city => $composableBuilder(
+    column: $table.city,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get taxNumber => $composableBuilder(
+    column: $table.taxNumber,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get commercialRegister => $composableBuilder(
+    column: $table.commercialRegister,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get logoPath => $composableBuilder(
+    column: $table.logoPath,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get defaultQuotationNotes => $composableBuilder(
+    column: $table.defaultQuotationNotes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get defaultInvoiceTerms => $composableBuilder(
+    column: $table.defaultInvoiceTerms,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedAtUtc => $composableBuilder(
+    column: $table.updatedAtUtc,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$BusinessProfilesTableTableAnnotationComposer
+    extends Composer<_$AppDatabase, $BusinessProfilesTableTable> {
+  $$BusinessProfilesTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get businessName => $composableBuilder(
+    column: $table.businessName,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get ownerName =>
+      $composableBuilder(column: $table.ownerName, builder: (column) => column);
+
+  GeneratedColumn<String> get phonePrimary => $composableBuilder(
+    column: $table.phonePrimary,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get phoneSecondary => $composableBuilder(
+    column: $table.phoneSecondary,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get address =>
+      $composableBuilder(column: $table.address, builder: (column) => column);
+
+  GeneratedColumn<String> get city =>
+      $composableBuilder(column: $table.city, builder: (column) => column);
+
+  GeneratedColumn<String> get taxNumber =>
+      $composableBuilder(column: $table.taxNumber, builder: (column) => column);
+
+  GeneratedColumn<String> get commercialRegister => $composableBuilder(
+    column: $table.commercialRegister,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get logoPath =>
+      $composableBuilder(column: $table.logoPath, builder: (column) => column);
+
+  GeneratedColumn<String> get defaultQuotationNotes => $composableBuilder(
+    column: $table.defaultQuotationNotes,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get defaultInvoiceTerms => $composableBuilder(
+    column: $table.defaultInvoiceTerms,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get updatedAtUtc => $composableBuilder(
+    column: $table.updatedAtUtc,
+    builder: (column) => column,
+  );
+}
+
+class $$BusinessProfilesTableTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $BusinessProfilesTableTable,
+          BusinessProfileData,
+          $$BusinessProfilesTableTableFilterComposer,
+          $$BusinessProfilesTableTableOrderingComposer,
+          $$BusinessProfilesTableTableAnnotationComposer,
+          $$BusinessProfilesTableTableCreateCompanionBuilder,
+          $$BusinessProfilesTableTableUpdateCompanionBuilder,
+          (
+            BusinessProfileData,
+            BaseReferences<
+              _$AppDatabase,
+              $BusinessProfilesTableTable,
+              BusinessProfileData
+            >,
+          ),
+          BusinessProfileData,
+          PrefetchHooks Function()
+        > {
+  $$BusinessProfilesTableTableTableManager(
+    _$AppDatabase db,
+    $BusinessProfilesTableTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$BusinessProfilesTableTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer: () =>
+              $$BusinessProfilesTableTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer: () =>
+              $$BusinessProfilesTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<String> businessName = const Value.absent(),
+                Value<String?> ownerName = const Value.absent(),
+                Value<String> phonePrimary = const Value.absent(),
+                Value<String?> phoneSecondary = const Value.absent(),
+                Value<String?> address = const Value.absent(),
+                Value<String?> city = const Value.absent(),
+                Value<String?> taxNumber = const Value.absent(),
+                Value<String?> commercialRegister = const Value.absent(),
+                Value<String?> logoPath = const Value.absent(),
+                Value<String?> defaultQuotationNotes = const Value.absent(),
+                Value<String?> defaultInvoiceTerms = const Value.absent(),
+                Value<String> updatedAtUtc = const Value.absent(),
+              }) => BusinessProfileCompanion(
+                id: id,
+                businessName: businessName,
+                ownerName: ownerName,
+                phonePrimary: phonePrimary,
+                phoneSecondary: phoneSecondary,
+                address: address,
+                city: city,
+                taxNumber: taxNumber,
+                commercialRegister: commercialRegister,
+                logoPath: logoPath,
+                defaultQuotationNotes: defaultQuotationNotes,
+                defaultInvoiceTerms: defaultInvoiceTerms,
+                updatedAtUtc: updatedAtUtc,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required String businessName,
+                Value<String?> ownerName = const Value.absent(),
+                required String phonePrimary,
+                Value<String?> phoneSecondary = const Value.absent(),
+                Value<String?> address = const Value.absent(),
+                Value<String?> city = const Value.absent(),
+                Value<String?> taxNumber = const Value.absent(),
+                Value<String?> commercialRegister = const Value.absent(),
+                Value<String?> logoPath = const Value.absent(),
+                Value<String?> defaultQuotationNotes = const Value.absent(),
+                Value<String?> defaultInvoiceTerms = const Value.absent(),
+                required String updatedAtUtc,
+              }) => BusinessProfileCompanion.insert(
+                id: id,
+                businessName: businessName,
+                ownerName: ownerName,
+                phonePrimary: phonePrimary,
+                phoneSecondary: phoneSecondary,
+                address: address,
+                city: city,
+                taxNumber: taxNumber,
+                commercialRegister: commercialRegister,
+                logoPath: logoPath,
+                defaultQuotationNotes: defaultQuotationNotes,
+                defaultInvoiceTerms: defaultInvoiceTerms,
+                updatedAtUtc: updatedAtUtc,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$BusinessProfilesTableTable, BusinessProfileData>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $BusinessProfilesTableTable,
+                    BusinessProfileData
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$BusinessProfilesTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $BusinessProfilesTableTable,
+      BusinessProfileData,
+      $$BusinessProfilesTableTableFilterComposer,
+      $$BusinessProfilesTableTableOrderingComposer,
+      $$BusinessProfilesTableTableAnnotationComposer,
+      $$BusinessProfilesTableTableCreateCompanionBuilder,
+      $$BusinessProfilesTableTableUpdateCompanionBuilder,
+      (
+        BusinessProfileData,
+        BaseReferences<
+          _$AppDatabase,
+          $BusinessProfilesTableTable,
+          BusinessProfileData
+        >,
+      ),
+      BusinessProfileData,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -8303,4 +9530,6 @@ class $AppDatabaseManager {
       $$InvoiceItemsTableTableTableManager(_db, _db.invoiceItemsTable);
   $$InvoicePaymentsTableTableTableManager get invoicePaymentsTable =>
       $$InvoicePaymentsTableTableTableManager(_db, _db.invoicePaymentsTable);
+  $$BusinessProfilesTableTableTableManager get businessProfilesTable =>
+      $$BusinessProfilesTableTableTableManager(_db, _db.businessProfilesTable);
 }

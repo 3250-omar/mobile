@@ -65,6 +65,18 @@ MigrationStrategy buildMigrationStrategy({
           }
         }
       }
+      if (from < 5) {
+        // Migrate schema from v4 to v5: create business_profiles table and indices.
+        for (final entity in database.allSchemaEntities) {
+          if (entity is TableInfo &&
+              entity.actualTableName == 'business_profiles') {
+            await m.createTable(entity);
+          } else if (entity is Index &&
+              entity.entityName.startsWith('idx_business_profiles_')) {
+            await m.createIndex(entity);
+          }
+        }
+      }
     },
     beforeOpen: (OpeningDetails details) async {
       if (details.versionBefore != null &&

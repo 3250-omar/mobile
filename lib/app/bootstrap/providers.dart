@@ -22,6 +22,8 @@ import '../../features/invoices/domain/invoice_repository.dart';
 import '../../features/invoices/domain/pdf_invoice_generator.dart';
 import '../../features/quotations/application/quotations_controller.dart';
 import '../../features/quotations/data/drift_quotation_repository.dart';
+import '../../features/quotations/data/pdf_quotation_generator.dart';
+import '../../features/quotations/domain/pdf_quotation_generator.dart';
 import '../../features/quotations/domain/quotation_repository.dart';
 import '../../features/scan/application/scan_controller.dart';
 import '../../features/scan/application/scan_state.dart';
@@ -32,8 +34,11 @@ import '../../features/scan/domain/catalog_matcher.dart';
 import '../../features/scan/domain/ocr_scanner.dart';
 import '../../features/scan/domain/plumbing_line_parser.dart';
 import '../../features/scan/domain/plumbing_text_parser.dart';
+import '../../features/settings/application/business_profile_controller.dart';
 import '../../features/settings/application/settings_controller.dart';
+import '../../features/settings/data/drift_business_profile_repository.dart';
 import '../../features/settings/domain/app_settings.dart';
+import '../../features/settings/domain/business_profile_repository.dart';
 import '../../features/settings/domain/settings_repository.dart';
 import 'app_environment.dart';
 import 'initialization_controller.dart';
@@ -121,6 +126,11 @@ final quotationsControllerProvider =
       return QuotationsController(repository);
     });
 
+/// Provider for 100% offline PDF quotation generator.
+final pdfQuotationGeneratorProvider = Provider<PdfQuotationGenerator>((ref) {
+  return DefaultPdfQuotationGenerator();
+});
+
 /// Provider for invoices repository.
 final invoiceRepositoryProvider = Provider<InvoiceRepository>((ref) {
   final db = ref.watch(appDatabaseProvider);
@@ -200,4 +210,21 @@ final backupRestoreControllerProvider =
     StateNotifierProvider<BackupRestoreController, BackupRestoreState>((ref) {
       final service = ref.watch(backupRestoreServiceProvider);
       return BackupRestoreController(service);
+    });
+
+/// Provider for the business profile repository.
+final businessProfileRepositoryProvider = Provider<BusinessProfileRepository>((
+  ref,
+) {
+  final db = ref.watch(appDatabaseProvider);
+  return DriftBusinessProfileRepository(db);
+});
+
+/// Provider for business profile management controller.
+final businessProfileControllerProvider =
+    StateNotifierProvider<BusinessProfileController, BusinessProfileState>((
+      ref,
+    ) {
+      final repository = ref.watch(businessProfileRepositoryProvider);
+      return BusinessProfileController(repository);
     });

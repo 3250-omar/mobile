@@ -99,6 +99,28 @@ class SettingsScreen extends ConsumerWidget {
             ),
             const SizedBox(height: AppSpacing.lg),
             Text(
+              'هوية المتجر والمستندات',
+              style: theme.textTheme.titleSmall?.copyWith(
+                color: theme.colorScheme.secondary,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: AppSpacing.sm),
+            AppCard(
+              padding: EdgeInsets.zero,
+              child: ListTile(
+                key: const Key('settings_business_profile_tile'),
+                leading: const Icon(Icons.storefront_outlined),
+                title: const Text('بيانات المنشأة وترويسة الفواتير'),
+                subtitle: const Text(
+                  'اسم المحل، أرقام التواصل، الشعار، والشروط',
+                ),
+                trailing: const Icon(Icons.chevron_left),
+                onTap: () => context.push(RouteNames.businessProfilePath),
+              ),
+            ),
+            const SizedBox(height: AppSpacing.lg),
+            Text(
               l10n.backupTitle,
               style: theme.textTheme.titleSmall?.copyWith(
                 color: theme.colorScheme.secondary,

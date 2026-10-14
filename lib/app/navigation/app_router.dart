@@ -12,6 +12,7 @@ import '../../features/quotations/presentation/quotation_form_screen.dart';
 import '../../features/quotations/presentation/quotations_screen.dart';
 import '../../features/scan/presentation/scan_review_screen.dart';
 import '../../features/scan/presentation/scan_screen.dart';
+import '../../features/settings/presentation/business_profile_screen.dart';
 import '../../features/settings/presentation/settings_screen.dart';
 import '../../l10n/app_localizations.dart';
 import 'app_shell.dart';
@@ -137,6 +138,12 @@ GoRouter createAppRouter({String initialLocation = RouteNames.homePath}) {
         path: RouteNames.backupPath,
         parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) => const BackupRestoreScreen(),
+      ),
+      GoRoute(
+        name: RouteNames.businessProfile,
+        path: RouteNames.businessProfilePath,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const BusinessProfileScreen(),
       ),
     ],
     errorBuilder: (context, state) {

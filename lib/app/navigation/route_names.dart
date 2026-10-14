@@ -31,4 +31,7 @@ class RouteNames {
 
   static const String backup = 'backup';
   static const String backupPath = '/settings/backup';
+
+  static const String businessProfile = 'business_profile';
+  static const String businessProfilePath = '/settings/business-profile';
 }
